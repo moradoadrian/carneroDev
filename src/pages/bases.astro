@@ -1,0 +1,191 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import Logo from '../components/Logo.astro';
+---
+
+<Layout title="Bases del Evento | <Carnero.Dev/> Hackathon">
+  <Navbar />
+
+  <!-- Main Container -->
+  <main class="flex-grow pt-32 pb-24 px-4 bg-dot-matrix relative z-10">
+    <div class="absolute inset-0 bg-grid-cyber opacity-15 pointer-events-none z-0"></div>
+
+    <div class="max-w-4xl mx-auto relative z-10">
+      
+      <!-- Back Button -->
+      <div class="mb-8 text-left">
+        <a 
+          href="/" 
+          class="font-mono text-xs text-gold-500 hover:text-gold-400 border border-gold-500/25 px-4 py-2 rounded-full bg-gold-500/5 hover:bg-gold-500/10 transition-all select-none"
+        >
+          &lt;- Volver al Inicio
+        </a>
+      </div>
+
+      <!-- Header -->
+      <div class="text-center mb-16 select-none">
+        <div class="mb-6 flex justify-center">
+          <Logo className="w-24 h-24" glow={true} />
+        </div>
+        <h1 class="text-4xl md:text-5xl font-display font-black text-white tracking-tight mb-4">
+          Bases y Reglamento Oficial
+        </h1>
+        <p class="font-mono text-xs uppercase tracking-widest text-gold-500">[ CARNERO_CORE_RULES_v1.0.4 ]</p>
+        <div class="w-20 h-1 bg-gradient-to-r from-gold-500 to-burgundy-600 mx-auto mt-6 rounded-full"></div>
+      </div>
+
+      <!-- Content Sections -->
+      <div class="space-y-12">
+        
+        <!-- SECTION 1: REQUISITOS DE PARTICIPACIÓN -->
+        <section class="glassmorphism bg-charcoal-900/60 p-8 rounded-3xl border border-burgundy-800/10">
+          <div class="flex items-center gap-3 mb-6">
+            <span class="font-mono text-xs text-gold-500 font-bold border border-gold-500/20 px-2 py-0.5 rounded">[01]</span>
+            <h2 class="font-display font-bold text-xl text-white">Requisitos de Participación</h2>
+          </div>
+          <ul class="space-y-4 font-sans text-sm md:text-base text-brand-white/70 leading-relaxed">
+            <li class="flex items-start gap-2.5">
+              <span class="text-gold-500 font-mono mt-1 select-none">&gt;</span>
+              <span>**Elegibilidad**: Estudiantes universitarios activos de carreras afines a las Tecnologías de la Información y Comunicación (TICs), Ingeniería de Software, Mecatrónica y Sistemas Computacionales.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="text-gold-500 font-mono mt-1 select-none">&gt;</span>
+              <span>**Integración de Equipos**: Mínimo **3 integrantes** y un máximo de **5 integrantes** por equipo. No se permitirán equipos de menor o mayor tamaño para mantener la equidad.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="text-gold-500 font-mono mt-1 select-none">&gt;</span>
+              <span>**Herramientas Propias**: Cada equipo debe presentarse al evento con sus computadoras portátiles, extensiones eléctricas, adaptadores y componentes físicos (como placas de microcontroladores si van al track de IoT).</span>
+            </li>
+          </ul>
+        </section>
+
+        <!-- SECTION 2: REGLAS GENERALES Y CÓDIGO DE CONDUCTA -->
+        <section class="glassmorphism bg-charcoal-900/60 p-8 rounded-3xl border border-burgundy-800/10">
+          <div class="flex items-center gap-3 mb-6">
+            <span class="font-mono text-xs text-gold-500 font-bold border border-gold-500/20 px-2 py-0.5 rounded">[02]</span>
+            <h2 class="font-display font-bold text-xl text-white">Reglas Generales y Código de Conducta</h2>
+          </div>
+          <ul class="space-y-4 font-sans text-sm md:text-base text-brand-white/70 leading-relaxed">
+            <li class="flex items-start gap-2.5">
+              <span class="text-gold-500 font-mono mt-1 select-none">&gt;</span>
+              <span>**Originalidad de Código**: Todo el software/hardware entregado debe ser desarrollado a partir del inicio oficial del hackathon (Viernes 16 Oct, 11:00 AM). No se permite el uso de proyectos pre-construidos o plantillas previas de MVPs.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="text-gold-500 font-mono mt-1 select-none">&gt;</span>
+              <span>**Uso de Repositorios**: Todos los equipos deben subir su código a un repositorio público en **GitHub** con una licencia Open Source o MIT y documentar el avance con commits frecuentes durante las 36 horas.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="text-gold-500 font-mono mt-1 select-none">&gt;</span>
+              <span>**Respeto e Inclusión**: No se tolerará ningún tipo de acoso, discriminación, lenguaje ofensivo o sabotaje técnico hacia otros equipos, organizadores o mentores. Cualquier falta grave resultará en descalificación inmediata.</span>
+            </li>
+          </ul>
+        </section>
+
+        <!-- SECTION 3: CALENDARIO DE ENTREGAS Y HITOS -->
+        <section class="glassmorphism bg-charcoal-900/60 p-8 rounded-3xl border border-burgundy-800/10">
+          <div class="flex items-center gap-3 mb-6">
+            <span class="font-mono text-xs text-gold-500 font-bold border border-gold-500/20 px-2 py-0.5 rounded">[03]</span>
+            <h2 class="font-display font-bold text-xl text-white">Calendario de Entregas e Hitos</h2>
+          </div>
+          <div class="space-y-6 font-mono text-xs md:text-sm text-brand-white/80">
+            
+            <div class="border-l-2 border-gold-500 pl-4 py-1">
+              <div class="text-gold-400 font-bold mb-1">HITO 1: Registro Físico & Setup de Espacio</div>
+              <div class="text-brand-white/40">Viernes 16 Oct • 08:00 AM - 09:30 AM</div>
+              <p class="font-sans text-xs text-brand-white/60 mt-1 leading-relaxed">Instalación en la zona de hackeo, comprobación de red y acreditaciones inteligentes.</p>
+            </div>
+
+            <div class="border-l-2 border-burgundy-700 pl-4 py-1">
+              <div class="text-brand-white font-bold mb-1">HITO 2: Validación de Idea (Checkpoint 1)</div>
+              <div class="text-brand-white/40">Viernes 16 Oct • 06:00 PM - 07:30 PM</div>
+              <p class="font-sans text-xs text-brand-white/60 mt-1 leading-relaxed">Ronda rápida de 3 minutos con mentores asignados para validar viabilidad de la idea y corregir alcances técnicos.</p>
+            </div>
+
+            <div class="border-l-2 border-burgundy-700 pl-4 py-1">
+              <div class="text-brand-white font-bold mb-1">HITO 3: Demostración de Código Medio (Checkpoint 2)</div>
+              <div class="text-brand-white/40">Sábado 17 Oct • 11:00 AM - 01:00 PM</div>
+              <p class="font-sans text-xs text-brand-white/60 mt-1 leading-relaxed">Presentación de avances reales del backend, bases de datos o conexiones de circuitos al jurado mentor.</p>
+            </div>
+
+            <div class="border-l-2 border-gold-500 pl-4 py-1">
+              <div class="text-gold-400 font-bold mb-1">HITO 4: Cierre de Repositorios (Freeze)</div>
+              <div class="text-brand-white/40">Domingo 18 Oct • 08:00 AM</div>
+              <p class="font-sans text-xs text-brand-white/60 mt-1 leading-relaxed">Bloqueo absoluto de ramas en GitHub. No se aceptarán commits posteriores a este horario.</p>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- SECTION 4: CRITERIOS DE EVALUACIÓN DETALLADOS -->
+        <section class="glassmorphism bg-charcoal-900/60 p-8 rounded-3xl border border-burgundy-800/10">
+          <div class="flex items-center gap-3 mb-6">
+            <span class="font-mono text-xs text-gold-500 font-bold border border-gold-500/20 px-2 py-0.5 rounded">[04]</span>
+            <h2 class="font-display font-bold text-xl text-white">Criterios de Evaluación</h2>
+          </div>
+          <p class="font-sans text-sm text-brand-white/60 mb-6 leading-relaxed">
+            Nuestros jueces externos calificarán los proyectos utilizando una rúbrica balanceada basada en un máximo de **100 puntos**:
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            
+            <div class="bg-charcoal-950 p-4 rounded-2xl border border-burgundy-900/20">
+              <div class="font-mono text-xs text-gold-500 font-bold mb-1">Impacto de la Idea (25%)</div>
+              <p class="font-sans text-xs text-brand-white/50 leading-relaxed">Originalidad, utilidad social o institucional y potencial viabilidad del MVP.</p>
+            </div>
+
+            <div class="bg-charcoal-950 p-4 rounded-2xl border border-burgundy-900/20">
+              <div class="font-mono text-xs text-gold-500 font-bold mb-1">Calidad Técnica (25%)</div>
+              <p class="font-sans text-xs text-brand-white/50 leading-relaxed">Complejidad algorítmica, solidez en base de datos, buen uso de APIs y originalidad de código.</p>
+            </div>
+
+            <div class="bg-charcoal-950 p-4 rounded-2xl border border-burgundy-900/20">
+              <div class="font-mono text-xs text-gold-500 font-bold mb-1">Diseño & UX/UI (25%)</div>
+              <p class="font-sans text-xs text-brand-white/50 leading-relaxed">Usabilidad, interfaces fluidas, responsividad y estética visual de los componentes.</p>
+            </div>
+
+            <div class="bg-charcoal-950 p-4 rounded-2xl border border-burgundy-900/20">
+              <div class="font-mono text-xs text-gold-500 font-bold mb-1">Pitch & Demostración (25%)</div>
+              <p class="font-sans text-xs text-brand-white/50 leading-relaxed">Calidad de oratoria, claridad en el modelo de negocio y demostración en vivo sin errores catastróficos.</p>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- SECTION 5: TECNOLOGÍAS SUGERIDAS Y RECURSOS -->
+        <section class="glassmorphism bg-charcoal-900/60 p-8 rounded-3xl border border-burgundy-800/10">
+          <div class="flex items-center gap-3 mb-6">
+            <span class="font-mono text-xs text-gold-500 font-bold border border-gold-500/20 px-2 py-0.5 rounded">[05]</span>
+            <h2 class="font-display font-bold text-xl text-white">Tecnologías Permitidas</h2>
+          </div>
+          <p class="font-sans text-sm text-brand-white/70 leading-relaxed mb-4">
+            **No existen restricciones absolutas** de lenguajes, frameworks o motores de base de datos. Sin embargo, para agilizar los desarrollos bajo presión, se sugiere:
+          </p>
+          <div class="flex flex-wrap gap-2.5">
+            <span class="font-mono text-xs px-3 py-1 rounded-lg bg-charcoal-950 border border-charcoal-800 text-gold-500 font-bold">HTML/CSS/JS</span>
+            <span class="font-mono text-xs px-3 py-1 rounded-lg bg-charcoal-950 border border-charcoal-800 text-gold-500 font-bold">Node.js / Python / Go</span>
+            <span class="font-mono text-xs px-3 py-1 rounded-lg bg-charcoal-950 border border-charcoal-800 text-gold-500 font-bold">React / Astro / Svelte</span>
+            <span class="font-mono text-xs px-3 py-1 rounded-lg bg-charcoal-950 border border-charcoal-800 text-gold-500 font-bold">Flutter / React Native</span>
+            <span class="font-mono text-xs px-3 py-1 rounded-lg bg-charcoal-950 border border-charcoal-800 text-gold-500 font-bold">PostgreSQL / MongoDB</span>
+            <span class="font-mono text-xs px-3 py-1 rounded-lg bg-charcoal-950 border border-charcoal-800 text-gold-500 font-bold">ESP32 / Arduino IDE</span>
+            <span class="font-mono text-xs px-3 py-1 rounded-lg bg-charcoal-950 border border-charcoal-800 text-gold-500 font-bold">Git / GitHub</span>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- Action Button / Return -->
+      <div class="mt-16 text-center select-none">
+        <a 
+          href="/" 
+          class="font-mono inline-block px-8 py-4 rounded-full font-bold bg-gradient-to-r from-burgundy-800 to-gold-600 text-white hover:from-burgundy-700 hover:to-gold-500 transition-all duration-300 text-center shadow-lg hover:shadow-[0_0_20px_rgba(217,164,65,0.25)] hover:scale-105"
+        >
+          [ &lt;- Volver a la Página Principal ]
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

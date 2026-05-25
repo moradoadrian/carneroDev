@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
+import RegisterModal from '../components/RegisterModal.astro';
 import Hero from '../components/Hero.astro';
 import About from '../components/About.astro';
 import Tracks from '../components/Tracks.astro';
@@ -15,6 +16,9 @@ import Footer from '../components/Footer.astro';
 <Layout>
   <!-- Global Blur Floating Navigation -->
   <Navbar />
+  
+  <!-- Interactive Registration Modal -->
+  <RegisterModal />
 
   <!-- Single-Page Scrolling Content -->
   <main class="flex-grow">

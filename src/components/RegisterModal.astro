@@ -1,0 +1,217 @@
+---
+---
+
+<!-- Modal Backdrop -->
+<div 
+  id="register-modal" 
+  class="fixed inset-0 w-full h-full bg-charcoal-950/80 backdrop-blur-md z-[100] flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300 px-4"
+>
+  <!-- Modal Content Card -->
+  <div 
+    class="glassmorphism bg-charcoal-900/90 max-w-lg w-full rounded-3xl border border-gold-500/20 shadow-2xl overflow-hidden relative transform scale-95 transition-all duration-300 max-h-[90vh] flex flex-col"
+    id="modal-card"
+  >
+    <!-- Top scanning bar -->
+    <div class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-burgundy-800 via-gold-500 to-burgundy-600"></div>
+
+    <!-- Header -->
+    <div class="px-6 py-5 border-b border-burgundy-900/20 flex items-center justify-between bg-charcoal-950/50">
+      <div class="flex items-center gap-2 select-none">
+        <span class="inline-block w-2.5 h-2.5 rounded-full bg-gold-500 animate-pulse"></span>
+        <h3 class="font-mono text-sm font-bold text-white uppercase tracking-wider">[ REGISTRO_DE_EQUIPO ]</h3>
+      </div>
+      <button 
+        id="close-register-modal" 
+        class="text-brand-white/50 hover:text-gold-400 p-1.5 rounded-lg hover:bg-charcoal-800 transition-colors"
+        aria-label="Cerrar modal"
+      >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Scrollable Form Container -->
+    <div class="p-6 overflow-y-auto flex-grow">
+      
+      <!-- Simulation Terminal Screen (Shown on Success) -->
+      <div id="registration-success" class="hidden font-mono text-xs md:text-sm text-left bg-charcoal-950/95 p-6 rounded-2xl border border-gold-500/25 min-h-[280px] text-brand-white/80 relative">
+        <div class="text-gold-500 mb-2">[BOOTING_REGISTRATION_SYSTEM...]</div>
+        <div class="text-brand-white/50 mt-1">&gt; Procesando datos del equipo...</div>
+        <div class="text-brand-white/50">&gt; Generando llaves de seguridad GPG...</div>
+        <div class="text-brand-white/50">&gt; Guardando credenciales en base de datos...</div>
+        <div class="text-gold-500 mt-4 font-bold animate-pulse">&gt;&gt;&gt; ¡REGISTRO EXITOSO! &lt;&lt;&lt;</div>
+        <p class="text-brand-white/60 mt-3 font-sans text-xs leading-relaxed">
+          Hemos enviado un correo de confirmación con las llaves de acceso a la cuenta del representante del equipo. 
+          ¡Nos vemos el 16 de Octubre!
+        </p>
+        <button 
+          id="btn-success-close"
+          class="mt-6 w-full font-mono text-xs py-3 rounded-xl border border-gold-500 text-gold-400 hover:bg-gold-500 hover:text-charcoal-950 transition-all font-semibold"
+        >
+          [ CERRAR ]
+        </button>
+      </div>
+
+      <!-- Main HTML Form -->
+      <form id="registration-form" class="space-y-4">
+        
+        <!-- Team Name -->
+        <div>
+          <label class="font-mono text-[10px] text-gold-500 uppercase tracking-widest block mb-1.5 font-bold">Nombre del Equipo *</label>
+          <input 
+            type="text" 
+            required 
+            placeholder="e.g. RoqueHackers" 
+            name="teamName"
+            class="w-full bg-charcoal-950 border border-burgundy-900/30 rounded-xl px-4 py-2.5 text-sm text-brand-white placeholder-brand-white/20 focus:outline-none focus:border-gold-500/30 transition-colors"
+          />
+        </div>
+
+        <!-- Track Selector -->
+        <div>
+          <label class="font-mono text-[10px] text-gold-500 uppercase tracking-widest block mb-1.5 font-bold">Track Seleccionado *</label>
+          <select 
+            name="track"
+            required
+            class="w-full bg-charcoal-950 border border-burgundy-900/30 rounded-xl px-4 py-2.5 text-sm text-brand-white/80 focus:outline-none focus:border-gold-500/30 transition-colors"
+          >
+            <option value="" disabled selected class="bg-charcoal-900 text-brand-white/30">Selecciona una categoría</option>
+            <option value="web" class="bg-charcoal-900">Track 01 // Web Development</option>
+            <option value="mobile" class="bg-charcoal-900">Track 02 // Mobile Apps</option>
+            <option value="ai" class="bg-charcoal-900">Track 03 // AI & Machine Learning</option>
+            <option value="cyber" class="bg-charcoal-900">Track 04 // Cybersecurity</option>
+            <option value="iot" class="bg-charcoal-900">Track 05 // IoT & Hardware</option>
+            <option value="open" class="bg-charcoal-900">Track 06 // Open Innovation</option>
+          </select>
+        </div>
+
+        <!-- Divider line -->
+        <div class="h-[1px] bg-gradient-to-r from-burgundy-800/20 to-transparent my-4"></div>
+
+        <!-- Representative Name -->
+        <div>
+          <label class="font-mono text-[10px] text-gold-500 uppercase tracking-widest block mb-1.5 font-bold">Nombre del Representante *</label>
+          <input 
+            type="text" 
+            required 
+            placeholder="Nombre completo" 
+            name="repName"
+            class="w-full bg-charcoal-950 border border-burgundy-900/30 rounded-xl px-4 py-2.5 text-sm text-brand-white placeholder-brand-white/20 focus:outline-none focus:border-gold-500/30 transition-colors"
+          />
+        </div>
+
+        <!-- Representative Email -->
+        <div>
+          <label class="font-mono text-[10px] text-gold-500 uppercase tracking-widest block mb-1.5 font-bold">Email de Contacto *</label>
+          <input 
+            type="email" 
+            required 
+            placeholder="rep@roque.tecnm.mx" 
+            name="repEmail"
+            class="w-full bg-charcoal-950 border border-burgundy-900/30 rounded-xl px-4 py-2.5 text-sm text-brand-white placeholder-brand-white/20 focus:outline-none focus:border-gold-500/30 transition-colors"
+          />
+        </div>
+
+        <!-- Member Count -->
+        <div>
+          <label class="font-mono text-[10px] text-gold-500 uppercase tracking-widest block mb-1.5 font-bold">Integrantes del Equipo (Incluyendo Líder) *</label>
+          <div class="flex items-center gap-4">
+            <label class="flex items-center gap-2 font-sans text-sm text-brand-white/80 cursor-pointer">
+              <input type="radio" name="membersCount" value="3" checked class="accent-gold-500" /> 3 integrantes
+            </label>
+            <label class="flex items-center gap-2 font-sans text-sm text-brand-white/80 cursor-pointer">
+              <input type="radio" name="membersCount" value="4" class="accent-gold-500" /> 4 integrantes
+            </label>
+            <label class="flex items-center gap-2 font-sans text-sm text-brand-white/80 cursor-pointer">
+              <input type="radio" name="membersCount" value="5" class="accent-gold-500" /> 5 integrantes
+            </label>
+          </div>
+        </div>
+
+        <!-- Checkbox rules -->
+        <div class="pt-2">
+          <label class="flex items-start gap-2.5 font-sans text-xs text-brand-white/60 cursor-pointer select-none leading-relaxed">
+            <input type="checkbox" required class="accent-gold-500 mt-0.5" />
+            <span>Aceptamos las bases del evento, el código de conducta y nos comprometemos a entregar código 100% original.</span>
+          </label>
+        </div>
+
+        <!-- Submit CTA -->
+        <div class="pt-4">
+          <button 
+            type="submit" 
+            class="w-full font-mono text-sm py-3 px-6 rounded-xl font-bold bg-gradient-to-r from-burgundy-800 to-gold-600 text-white hover:from-burgundy-700 hover:to-gold-500 transition-all duration-300 shadow-md hover:shadow-[0_0_20px_rgba(217,164,65,0.25)] hover:scale-[1.02] active:scale-95 cursor-pointer"
+          >
+            [ ENVIAR REGISTRO ]
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  const modal = document.getElementById('register-modal');
+  const card = document.getElementById('modal-card');
+  const closeBtn = document.getElementById('close-register-modal');
+  const form = document.getElementById('registration-form') as HTMLFormElement;
+  const successScreen = document.getElementById('registration-success');
+  const successCloseBtn = document.getElementById('btn-success-close');
+
+  function openModal() {
+    if (!modal || !card) return;
+    modal.classList.remove('opacity-0', 'pointer-events-none');
+    modal.classList.add('opacity-100', 'pointer-events-auto');
+    card.classList.remove('scale-95');
+    card.classList.add('scale-100');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    if (!modal || !card) return;
+    modal.classList.remove('opacity-100', 'pointer-events-auto');
+    modal.classList.add('opacity-0', 'pointer-events-none');
+    card.classList.remove('scale-100');
+    card.classList.add('scale-95');
+    document.body.style.overflow = '';
+    
+    // Reset forms after animations close
+    setTimeout(() => {
+      if (form) form.classList.remove('hidden');
+      if (successScreen) successScreen.classList.add('hidden');
+      if (form) form.reset();
+    }, 300);
+  }
+
+  // Intercept all links targeting #register
+  document.addEventListener('click', (e) => {
+    const target = e.target as HTMLElement;
+    const anchor = target.closest('a');
+    if (anchor && anchor.getAttribute('href') === '#register') {
+      e.preventDefault();
+      openModal();
+    }
+  });
+
+  closeBtn?.addEventListener('click', closeModal);
+  successCloseBtn?.addEventListener('click', closeModal);
+
+  // Close modal clicking on background backdrop
+  modal?.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      closeModal();
+    }
+  });
+
+  // Handle Form Submission
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (!form || !successScreen) return;
+    
+    // Hide form and show terminal success panel
+    form.classList.add('hidden');
+    successScreen.classList.remove('hidden');
+  });
+</script>
