@@ -1,0 +1,229 @@
+---
+import '../styles/global.css';
+import LoadingScreen from '../components/LoadingScreen.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { 
+  title = "<Carnero.Dev/> | Hackathon TICs ITR • Roque", 
+  description = "El hackathon oficial de desarrollo de software, innovación y cultura hacker del ITR Roque. Construye, programa e innova con nosotros del 16 al 18 de Octubre, 2026." 
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="es" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/carneroDev-removebg-preview.png" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- Primary Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://carnero.dev" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="/carneroDev-removebg-preview.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://carnero.dev" />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content="/carneroDev-removebg-preview.png" />
+  </head>
+  <body class="bg-charcoal-950 text-brand-white font-sans antialiased relative min-h-screen">
+    
+    <!-- Booting Cybernetic Loading Screen -->
+    <LoadingScreen />
+    
+    <!-- Canvas for Tech Nodes Particle Background -->
+    <canvas id="tech-canvas" class="fixed top-0 left-0 w-full h-full pointer-events-none z-0 opacity-40"></canvas>
+
+    <!-- Overlay scanning and visual elements -->
+    <div class="fixed inset-0 pointer-events-none z-40 bg-[radial-gradient(ellipse_at_center,transparent_40%,rgba(8,8,10,0.85))]"></div>
+    <div class="fixed top-0 left-0 w-full h-1 z-50 bg-gradient-to-r from-burgundy-800 via-gold-500 to-burgundy-800 opacity-60"></div>
+    
+    <!-- Custom Cursor Glow -->
+    <div id="cursor-glow" class="fixed top-0 left-0 w-[400px] h-[400px] -translate-x-1/2 -translate-y-1/2 rounded-full pointer-events-none z-10 opacity-0 transition-opacity duration-300 bg-[radial-gradient(circle,rgba(90,16,34,0.15)_0%,rgba(217,164,65,0.03)_50%,transparent_100%)]"></div>
+
+    <!-- Main Content Wrapper -->
+    <div class="relative z-10 flex flex-col min-h-screen">
+      <slot />
+    </div>
+
+    <!-- Background Animation Logic -->
+    <script>
+      // Tech Canvas Nodes animation
+      const canvas = document.getElementById('tech-canvas') as HTMLCanvasElement;
+      if (canvas) {
+        const ctx = canvas.getContext('2d');
+        if (ctx) {
+          let particles: Particle[] = [];
+          let mouse = { x: null as number | null, y: null as number | null, radius: 150 };
+
+          class Particle {
+            x: number;
+            y: number;
+            directionX: number;
+            directionY: number;
+            size: number;
+            color: string;
+
+            constructor(x: number, y: number, directionX: number, directionY: number, size: number, color: string) {
+              this.x = x;
+              this.y = y;
+              this.directionX = directionX;
+              this.directionY = directionY;
+              this.size = size;
+              this.color = color;
+            }
+
+            draw() {
+              if (!ctx) return;
+              ctx.beginPath();
+              ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+              ctx.fillStyle = this.color;
+              ctx.fill();
+            }
+
+            update() {
+              if (!canvas) return;
+              // Check bounds
+              if (this.x > canvas.width || this.x < 0) {
+                this.directionX = -this.directionX;
+              }
+              if (this.y > canvas.height || this.y < 0) {
+                this.directionY = -this.directionY;
+              }
+
+              // Interaction with mouse
+              if (mouse.x !== null && mouse.y !== null) {
+                let dx = mouse.x - this.x;
+                let dy = mouse.y - this.y;
+                let distance = Math.sqrt(dx * dx + dy * dy);
+                if (distance < mouse.radius) {
+                  // Subtle attraction
+                  this.x += dx * 0.01;
+                  this.y += dy * 0.01;
+                }
+              }
+
+              this.x += this.directionX;
+              this.y += this.directionY;
+              this.draw();
+            }
+          }
+
+          function init() {
+            if (!canvas) return;
+            particles = [];
+            let numberOfParticles = Math.floor((canvas.width * canvas.height) / 16000);
+            if (numberOfParticles > 120) numberOfParticles = 120;
+            if (numberOfParticles < 30) numberOfParticles = 30;
+
+            for (let i = 0; i < numberOfParticles; i++) {
+              let size = Math.random() * 2 + 1;
+              let x = Math.random() * (canvas.width - size * 2) + size;
+              let y = Math.random() * (canvas.height - size * 2) + size;
+              let directionX = (Math.random() * 0.4) - 0.2;
+              let directionY = (Math.random() * 0.4) - 0.2;
+              
+              // 70% burgundy nodes, 30% gold nodes
+              let color = Math.random() > 0.3 ? 'rgba(90, 16, 34, 0.4)' : 'rgba(217, 164, 65, 0.5)';
+              particles.push(new Particle(x, y, directionX, directionY, size, color));
+            }
+          }
+
+          function connect() {
+            if (!ctx || !canvas) return;
+            let opacityValue = 1;
+            for (let a = 0; a < particles.length; a++) {
+              for (let b = a; b < particles.length; b++) {
+                let dx = particles[a].x - particles[b].x;
+                let dy = particles[a].y - particles[b].y;
+                let distance = Math.sqrt(dx * dx + dy * dy);
+
+                if (distance < 130) {
+                  opacityValue = 1 - (distance / 130);
+                  // Set connection line gradient
+                  const gradient = ctx.createLinearGradient(particles[a].x, particles[a].y, particles[b].x, particles[b].y);
+                  
+                  // Color interpolation depending on particle colors
+                  let colorA = particles[a].color.includes('217') ? 'rgba(217, 164, 65, ' : 'rgba(90, 16, 34, ';
+                  let colorB = particles[b].color.includes('217') ? 'rgba(217, 164, 65, ' : 'rgba(90, 16, 34, ';
+                  
+                  gradient.addColorStop(0, `${colorA}${opacityValue * 0.15})`);
+                  gradient.addColorStop(1, `${colorB}${opacityValue * 0.15})`);
+                  
+                  ctx.strokeStyle = gradient;
+                  ctx.lineWidth = 1;
+                  ctx.beginPath();
+                  ctx.moveTo(particles[a].x, particles[a].y);
+                  ctx.lineTo(particles[b].x, particles[b].y);
+                  ctx.stroke();
+                }
+              }
+            }
+          }
+
+          function animate() {
+            if (!ctx || !canvas) return;
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particles.length; i++) {
+              particles[i].update();
+            }
+            connect();
+            requestAnimationFrame(animate);
+          }
+
+          function resizeCanvas() {
+            if (!canvas) return;
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            init();
+          }
+
+          // Initial Setup
+          resizeCanvas();
+          animate();
+
+          // Listeners
+          window.addEventListener('resize', resizeCanvas);
+          
+          window.addEventListener('mousemove', (event) => {
+            mouse.x = event.x;
+            mouse.y = event.y;
+          });
+
+          window.addEventListener('mouseout', () => {
+            mouse.x = null;
+            mouse.y = null;
+          });
+        }
+      }
+
+      // Cursor Light follow script
+      const cursorGlow = document.getElementById('cursor-glow');
+      if (cursorGlow) {
+        window.addEventListener('mousemove', (e) => {
+          cursorGlow.style.opacity = '1';
+          cursorGlow.style.left = `${e.clientX}px`;
+          cursorGlow.style.top = `${e.clientY}px`;
+        });
+        
+        window.addEventListener('mouseleave', () => {
+          cursorGlow.style.opacity = '0';
+        });
+      }
+    </script>
+  </body>
+</html>

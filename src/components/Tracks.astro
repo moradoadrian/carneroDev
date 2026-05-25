@@ -1,0 +1,162 @@
+---
+const tracks = [
+  {
+    code: 'TRACK_01',
+    title: 'Web Development',
+    subtitle: 'Arquitecturas de alto rendimiento',
+    icon: `<svg class="w-7 h-7 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>`,
+    expects: [
+      'Single Page Apps o SSR ultra veloces',
+      'Integraciones con APIs y bases de datos',
+      'Excelente experiencia de usuario (UX/UI)',
+      'Despliegues serverless optimizados'
+    ],
+    color: 'border-gold-500/20 hover:border-gold-500/40 hover:shadow-[0_0_30px_rgba(217,164,65,0.08)]',
+    tagColor: 'text-gold-500 bg-gold-500/5 border-gold-500/25'
+  },
+  {
+    code: 'TRACK_02',
+    title: 'Mobile Apps',
+    subtitle: 'Experiencias móviles nativas e híbridas',
+    icon: `<svg class="w-7 h-7 text-burgundy-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>`,
+    expects: [
+      'Aplicaciones fluidas e intuitivas',
+      'Acceso a sensores móviles o geolocalización',
+      'Despliegue multiplataforma (iOS/Android)',
+      'Sincronización de datos offline-first'
+    ],
+    color: 'border-burgundy-800/20 hover:border-burgundy-600/40 hover:shadow-[0_0_30px_rgba(90,16,34,0.1)]',
+    tagColor: 'text-burgundy-400 bg-burgundy-950/40 border-burgundy-800/30'
+  },
+  {
+    code: 'TRACK_03',
+    title: 'AI & Machine Learning',
+    subtitle: 'Modelos predictivos y agentes inteligentes',
+    icon: `<svg class="w-7 h-7 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>`,
+    expects: [
+      'Integración inteligente con modelos LLM',
+      'Modelos entrenados para análisis predictivo',
+      'Procesamiento de Lenguaje Natural (NLP)',
+      'Automatización autónoma de tareas complejas'
+    ],
+    color: 'border-gold-500/20 hover:border-gold-500/40 hover:shadow-[0_0_30px_rgba(217,164,65,0.08)]',
+    tagColor: 'text-gold-500 bg-gold-500/5 border-gold-500/25'
+  },
+  {
+    code: 'TRACK_04',
+    title: 'Cybersecurity',
+    subtitle: 'Protección de datos y hackeo ético',
+    icon: `<svg class="w-7 h-7 text-burgundy-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>`,
+    expects: [
+      'Diseño e implementación de criptografía',
+      'Estrategias de contención y auditoría',
+      'Mitigación demostrable de vulnerabilidades',
+      'Autenticación robusta y control de accesos'
+    ],
+    color: 'border-burgundy-800/20 hover:border-burgundy-600/40 hover:shadow-[0_0_30px_rgba(90,16,34,0.1)]',
+    tagColor: 'text-burgundy-400 bg-burgundy-950/40 border-burgundy-800/30'
+  },
+  {
+    code: 'TRACK_05',
+    title: 'IoT / Hardware',
+    subtitle: 'Integración física con microcontroladores',
+    icon: `<svg class="w-7 h-7 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/></svg>`,
+    expects: [
+      'Lectura inteligente y telemetría de sensores',
+      'Comunicación por protocolos (MQTT, HTTP)',
+      'Accionamiento físico ante eventos lógicos',
+      'Prototipado con Arduino, ESP32, o Raspberry'
+    ],
+    color: 'border-gold-500/20 hover:border-gold-500/40 hover:shadow-[0_0_30px_rgba(217,164,65,0.08)]',
+    tagColor: 'text-gold-500 bg-gold-500/5 border-gold-500/25'
+  },
+  {
+    code: 'TRACK_06',
+    title: 'Open Innovation',
+    subtitle: 'Solución a problemáticas comunitarias',
+    icon: `<svg class="w-7 h-7 text-burgundy-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>`,
+    expects: [
+      'Enfoque directo en problemáticas sociales',
+      'Viabilidad económica y técnica',
+      'Modelos escalables de alto impacto',
+      'Presentación excelente y propuesta de valor'
+    ],
+    color: 'border-burgundy-800/20 hover:border-burgundy-600/40 hover:shadow-[0_0_30px_rgba(90,16,34,0.1)]',
+    tagColor: 'text-burgundy-400 bg-burgundy-950/40 border-burgundy-800/30'
+  }
+];
+---
+
+<section 
+  id="tracks" 
+  class="relative py-28 px-4 overflow-hidden bg-charcoal-950"
+>
+  <!-- Decorative corner elements -->
+  <div class="absolute inset-0 bg-grid-cyber opacity-15 pointer-events-none z-0"></div>
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-burgundy-950/5 rounded-full blur-[180px] pointer-events-none z-0"></div>
+
+  <div class="max-w-7xl mx-auto relative z-10">
+    
+    <!-- Title Section -->
+    <div class="text-center mb-20">
+      <h2 class="font-mono text-xs uppercase tracking-widest text-gold-500 mb-3">[ HACKING CHANNELS ]</h2>
+      <p class="text-4xl md:text-5xl font-display font-black text-white tracking-tight">
+        Tracks & Categorías de Competencia
+      </p>
+      <div class="w-20 h-1 bg-gradient-to-r from-gold-500 to-burgundy-600 mx-auto mt-6 rounded-full"></div>
+      
+      <p class="mt-6 font-sans text-brand-white/60 max-w-2xl mx-auto text-base">
+        Elige tu enfoque técnico o enfócate en la innovación abierta. 
+        Tu proyecto será evaluado bajo rúbricas especializadas del track seleccionado.
+      </p>
+    </div>
+
+    <!-- Tracks Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+      {tracks.map((track) => (
+        <div class={`glassmorphism bg-charcoal-900/50 p-6 md:p-8 rounded-3xl border transition-all duration-300 hover:-translate-y-1 ${track.color} group relative overflow-hidden`}>
+          <!-- Glowing corner border indicator -->
+          <div class="absolute top-0 left-0 w-2 h-16 bg-gradient-to-b from-gold-500/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          <div class="absolute top-0 left-0 w-16 h-2 bg-gradient-to-r from-gold-500/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+
+          <!-- Header -->
+          <div class="flex items-center justify-between mb-6">
+            <span class={`font-mono text-[10px] font-semibold border px-2.5 py-0.5 rounded-full tracking-wider ${track.tagColor}`}>
+              {track.code}
+            </span>
+            <div class="p-2.5 bg-charcoal-950 border border-charcoal-800 rounded-xl group-hover:scale-110 group-hover:border-gold-500/20 transition-all duration-300" set:html={track.icon}>
+            </div>
+          </div>
+
+          <!-- Titles -->
+          <h3 class="font-display font-bold text-xl text-white group-hover:text-gold-400 transition-colors mb-1">
+            {track.title}
+          </h3>
+          <p class="font-sans text-xs text-brand-white/40 mb-6 font-mono">
+            {track.subtitle}
+          </p>
+
+          <!-- Divider line -->
+          <div class="h-[1px] bg-gradient-to-r from-gold-500/10 to-transparent mb-6"></div>
+
+          <!-- Expectations / Deliverables -->
+          <span class="font-mono text-[10px] uppercase text-gold-500/60 tracking-wider block mb-3">Requisitos esperados:</span>
+          <ul class="space-y-2.5">
+            {track.expects.map((exp) => (
+              <li class="flex items-start gap-2 text-sm text-brand-white/70">
+                <span class="text-gold-500 font-mono mt-0.5 select-none">&gt;</span>
+                <span class="font-sans leading-relaxed">{exp}</span>
+              </li>
+            ))}
+          </ul>
+          
+          <!-- Cyber Hex Background Icon -->
+          <div class="absolute right-4 bottom-4 font-mono font-black text-6xl text-brand-white/2 pointer-events-none select-none group-hover:scale-110 group-hover:text-gold-500/5 transition-all">
+            {track.code.split('_')[1]}
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

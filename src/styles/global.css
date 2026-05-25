@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-burgundy-950: #2D050E;
+  --color-burgundy-900: #3E0815;
+  --color-burgundy-800: #5A1022;
+  --color-burgundy-700: #7A1932;
+  --color-burgundy-600: #9B2443;
+  --color-burgundy-500: #BD3256;
+  
+  --color-gold-950: #3A2A0C;
+  --color-gold-900: #543E12;
+  --color-gold-800: #76561B;
+  --color-gold-700: #9C7226;
+  --color-gold-600: #C28F32;
+  --color-gold-500: #D9A441;
+  --color-gold-400: #E7BA5F;
+  --color-gold-300: #F1D082;
+  --color-gold-200: #F7E4B2;
+  
+  --color-charcoal-950: #08080A;
+  --color-charcoal-900: #0F0F13;
+  --color-charcoal-800: #16161D;
+  --color-charcoal-700: #1E1E26;
+  --color-charcoal-600: #262632;
+
+  --font-sans: "Inter", "Outfit", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "Courier New", monospace;
+  --font-display: "Outfit", "Inter", sans-serif;
+
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-grid-drift: grid-drift 24s linear infinite;
+  --animate-glow-pulse: glow-pulse 3s infinite alternate;
+  --animate-glow-pulse-gold: glow-pulse-gold 3s infinite alternate;
+  --animate-scanline: scanline 8s linear infinite;
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-12px) rotate(0.5deg); }
+  }
+  @keyframes grid-drift {
+    0% { background-position: 0 0; }
+    100% { background-position: 40px 40px; }
+  }
+  @keyframes glow-pulse {
+    0% { box-shadow: 0 0 5px rgba(90, 16, 34, 0.2), 0 0 10px rgba(90, 16, 34, 0.1); }
+    100% { box-shadow: 0 0 20px rgba(90, 16, 34, 0.6), 0 0 30px rgba(90, 16, 34, 0.3); }
+  }
+  @keyframes glow-pulse-gold {
+    0% { box-shadow: 0 0 5px rgba(217, 164, 65, 0.2), 0 0 10px rgba(217, 164, 65, 0.1); }
+    100% { box-shadow: 0 0 20px rgba(217, 164, 65, 0.5), 0 0 35px rgba(217, 164, 65, 0.3); }
+  }
+  @keyframes scanline {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100%); }
+  }
+}
+
+/* Custom Base Styles */
+html {
+  scroll-behavior: smooth;
+  background-color: var(--color-charcoal-900);
+  color: #F5F5F5;
+  font-family: var(--font-sans);
+}
+
+body {
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Custom Utilities for Hacker Aesthetic */
+.bg-grid-cyber {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(217, 164, 65, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(217, 164, 65, 0.03) 1px, transparent 1px);
+}
+
+.bg-dot-matrix {
+  background-size: 24px 24px;
+  background-image: radial-gradient(rgba(90, 16, 34, 0.15) 1.5px, transparent 1.5px);
+}
+
+.glassmorphism {
+  background: rgba(22, 22, 29, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(217, 164, 65, 0.1);
+}
+
+.glassmorphism-burgundy {
+  background: rgba(45, 5, 14, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(90, 16, 34, 0.25);
+}
+
+.glow-burgundy {
+  filter: drop-shadow(0 0 15px rgba(90, 16, 34, 0.55));
+}
+
+.glow-gold {
+  filter: drop-shadow(0 0 15px rgba(217, 164, 65, 0.45));
+}
+
+.text-glow-burgundy {
+  text-shadow: 0 0 10px rgba(90, 16, 34, 0.7), 0 0 20px rgba(90, 16, 34, 0.4);
+}
+
+.text-glow-gold {
+  text-shadow: 0 0 10px rgba(217, 164, 65, 0.6), 0 0 20px rgba(217, 164, 65, 0.3);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-charcoal-950);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-burgundy-800);
+  border-radius: 4px;
+  border: 2px solid var(--color-charcoal-950);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gold-500);
+}
+
+/* Selection */
+::selection {
+  background-color: var(--color-burgundy-800);
+  color: var(--color-gold-200);
+}
+
+/* Dynamic code scanning effect line */
+.scanlines::before {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  z-index: 2;
+  background-size: 100% 2px, 3px 100%;
+  pointer-events: none;
+}
+
+/* Hexagon border mask utility */
+.hex-border {
+  clip-path: polygon(8% 0%, 92% 0%, 100% 8%, 100% 92%, 92% 100%, 8% 100%, 0% 92%, 0% 8%);
+}

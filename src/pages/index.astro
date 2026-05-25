@@ -1,0 +1,48 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+import Tracks from '../components/Tracks.astro';
+import Timeline from '../components/Timeline.astro';
+import Prizes from '../components/Prizes.astro';
+import Speakers from '../components/Speakers.astro';
+import Faq from '../components/Faq.astro';
+import Sponsors from '../components/Sponsors.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout>
+  <!-- Global Blur Floating Navigation -->
+  <Navbar />
+
+  <!-- Single-Page Scrolling Content -->
+  <main class="flex-grow">
+    <!-- Hero Segment with Particles & Countdown -->
+    <Hero />
+
+    <!-- About Segment explaining Core Values -->
+    <About />
+
+    <!-- Tracks Segment outlining Technical Focus Channels -->
+    <Tracks />
+
+    <!-- Timeline Segment describing Schedule Milestones -->
+    <Timeline />
+
+    <!-- Prizes Segment detailing Esports Podiums -->
+    <Prizes />
+
+    <!-- Speakers Segment showcasing Industry Specialists -->
+    <Speakers />
+
+    <!-- FAQ Accordion Segment -->
+    <Faq />
+
+    <!-- Sponsors Segment showing Corporate Ties -->
+    <Sponsors />
+  </main>
+
+  <!-- Dynamic Footer Section -->
+  <Footer />
+</Layout>

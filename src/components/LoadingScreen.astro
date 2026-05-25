@@ -1,0 +1,102 @@
+---
+import Logo from './Logo.astro';
+---
+
+<div 
+  id="loading-screen" 
+  class="fixed inset-0 w-full h-full bg-charcoal-950 z-[9999] flex flex-col items-center justify-center transition-all duration-700 ease-in-out px-4 select-none scanlines"
+>
+  <div class="flex flex-col items-center max-w-sm w-full text-center">
+    
+    <!-- Pulse glowing logo container -->
+    <div class="mb-8 animate-pulse relative">
+      <Logo className="w-32 h-32 md:w-40 md:h-40" glow={true} />
+      <!-- Scanning line effect over the logo -->
+      <div class="absolute inset-0 bg-gradient-to-b from-transparent via-gold-500/20 to-transparent w-full h-8 blur-sm pointer-events-none animate-scanline"></div>
+    </div>
+
+    <!-- Tech branding title -->
+    <h2 class="font-mono text-lg font-bold text-white tracking-widest uppercase mb-6">
+      &lt;<span class="text-gold-500">Carnero</span><span class="text-burgundy-500">.Dev</span>/&gt;
+    </h2>
+
+    <!-- Cyberpunk loading status log -->
+    <div class="font-mono text-[10px] text-gold-500/60 h-6 mb-3 tracking-wider w-full overflow-hidden text-center" id="loader-log">
+      [BOOTING_CARNERO_CORE...]
+    </div>
+
+    <!-- Progress bar track -->
+    <div class="w-full h-[3px] bg-charcoal-800 rounded-full overflow-hidden border border-charcoal-900 shadow-sm relative">
+      <div 
+        id="loader-progress-bar" 
+        class="h-full bg-gradient-to-r from-burgundy-800 via-gold-500 to-burgundy-600 w-0 transition-all duration-100 ease-out shadow-[0_0_10px_rgba(217,164,65,0.5)]"
+      ></div>
+    </div>
+
+    <!-- Progress percentage text -->
+    <div class="font-mono text-xs text-brand-white/40 mt-3" id="loader-percentage">
+      0%
+    </div>
+
+  </div>
+</div>
+
+<script>
+  // Loading logs to display sequentially
+  const logs = [
+    '[STARTING_CARNERO_CLIENT_BOOT]',
+    '[ESTABLISHING_SECURE_LINK]',
+    '[INITIALIZING_NEURAL_SYNAPSE]',
+    '[LOADING_CIRCUIT_TRACES]',
+    '[DECRYPTING_HACKATHON_VARS]',
+    '[STATUS: READY_TO_CODE]'
+  ];
+
+  const loadingScreen = document.getElementById('loading-screen');
+  const progressBar = document.getElementById('loader-progress-bar');
+  const percentText = document.getElementById('loader-percentage');
+  const logText = document.getElementById('loader-log');
+
+  if (loadingScreen && progressBar && percentText && logText) {
+    let progress = 0;
+    
+    // Disable body scroll while loading
+    document.body.style.overflow = 'hidden';
+
+    const interval = setInterval(() => {
+      // Accelerate loading or make it look dynamic
+      progress += Math.floor(Math.random() * 8) + 2;
+      
+      if (progress >= 100) {
+        progress = 100;
+        clearInterval(interval);
+        
+        // Complete state
+        progressBar.style.width = '100%';
+        percentText.innerText = '100%';
+        logText.innerText = '[STATUS: HACK_READY]';
+        logText.classList.add('text-gold-400', 'animate-pulse');
+
+        // Fade out
+        setTimeout(() => {
+          loadingScreen.classList.add('opacity-0', 'pointer-events-none');
+          document.body.style.overflow = '';
+          
+          // Remove from DOM after fade-out transition
+          setTimeout(() => {
+            loadingScreen.remove();
+          }, 700);
+        }, 600);
+      } else {
+        progressBar.style.width = `${progress}%`;
+        percentText.innerText = `${progress}%`;
+        
+        // Update console logs based on percentage
+        const logIndex = Math.floor((progress / 100) * logs.length);
+        if (logs[logIndex] && logText.innerText !== logs[logIndex]) {
+          logText.innerText = logs[logIndex];
+        }
+      }
+    }, 80);
+  }
+</script>

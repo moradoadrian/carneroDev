@@ -1,0 +1,125 @@
+---
+const cards = [
+  {
+    title: 'Innovación Abierta',
+    description: 'Resuelve problemáticas reales sin límites de arquitectura. Crea soluciones disruptivas integrando hardware y software.',
+    icon: `<svg class="w-7 h-7 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>`,
+    tag: 'INNOVACIÓN',
+    border: 'border-gold-500/10 hover:border-gold-500/30 hover:shadow-[0_0_20px_rgba(217,164,65,0.06)]',
+    bgBadge: 'text-gold-500 bg-gold-500/5 border-gold-500/20',
+    iconBg: 'bg-gold-900/15 border-gold-500/20'
+  },
+  {
+    title: 'Trabajo en Equipo',
+    description: 'Une fuerzas con desarrolladores, diseñadores y estrategas. Aprende a colaborar bajo presión extrema en sprints continuos.',
+    icon: `<svg class="w-7 h-7 text-burgundy-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>`,
+    tag: 'CULTURA',
+    border: 'border-burgundy-800/10 hover:border-burgundy-600/30 hover:shadow-[0_0_20px_rgba(90,16,34,0.08)]',
+    bgBadge: 'text-burgundy-400 bg-burgundy-950/40 border-burgundy-800/30',
+    iconBg: 'bg-burgundy-950/40 border-burgundy-800/20'
+  },
+  {
+    title: 'Inteligencia Artificial',
+    description: 'Automatiza procesos y eleva la eficiencia. Implementa agentes inteligentes, machine learning y LLMs avanzados en tu MVP.',
+    icon: `<svg class="w-7 h-7 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>`,
+    tag: 'AGENTS / ML',
+    border: 'border-gold-500/10 hover:border-gold-500/30 hover:shadow-[0_0_20px_rgba(217,164,65,0.06)]',
+    bgBadge: 'text-gold-500 bg-gold-500/5 border-gold-500/20',
+    iconBg: 'bg-gold-900/15 border-gold-500/20'
+  },
+  {
+    title: 'Desarrollo Web & Cloud',
+    description: 'Crea plataformas fluidas, dinámicas y ultra-rápidas. Despliega infraestructura robusta lista para soportar tráfico masivo.',
+    icon: `<svg class="w-7 h-7 text-burgundy-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/></svg>`,
+    tag: 'CLOUD ARCH',
+    border: 'border-burgundy-800/10 hover:border-burgundy-600/30 hover:shadow-[0_0_20px_rgba(90,16,34,0.08)]',
+    bgBadge: 'text-burgundy-400 bg-burgundy-950/40 border-burgundy-800/30',
+    iconBg: 'bg-burgundy-950/40 border-burgundy-800/20'
+  },
+  {
+    title: 'Ciberseguridad & Redes',
+    description: 'Asegura tus despliegues. Protégete de ataques, inyecciones de código y explora la criptografía en la protección de datos.',
+    icon: `<svg class="w-7 h-7 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>`,
+    tag: 'SECURE CODE',
+    border: 'border-gold-500/10 hover:border-gold-500/30 hover:shadow-[0_0_20px_rgba(217,164,65,0.06)]',
+    bgBadge: 'text-gold-500 bg-gold-500/5 border-gold-500/20',
+    iconBg: 'bg-gold-900/15 border-gold-500/20'
+  },
+  {
+    title: 'DevOps & Automatización',
+    description: 'Implementa flujos de integración y despliegue continuo (CI/CD), automatiza infraestructura y diseña sistemas escalables.',
+    icon: `<svg class="w-7 h-7 text-burgundy-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>`,
+    tag: 'DEVOPS',
+    border: 'border-burgundy-800/10 hover:border-burgundy-600/30 hover:shadow-[0_0_20px_rgba(90,16,34,0.08)]',
+    bgBadge: 'text-burgundy-400 bg-burgundy-950/40 border-burgundy-800/30',
+    iconBg: 'bg-burgundy-950/40 border-burgundy-800/20'
+  }
+];
+---
+
+<section 
+  id="about" 
+  class="relative py-24 px-4 overflow-hidden bg-charcoal-900 border-t border-burgundy-900/10"
+>
+  <!-- Background subtle vectors -->
+  <div class="absolute inset-0 bg-dot-matrix opacity-10 pointer-events-none"></div>
+
+  <div class="max-w-7xl mx-auto relative z-10">
+    
+    <!-- Section Title -->
+    <div class="text-center mb-16">
+      <h2 class="font-mono text-xs uppercase tracking-widest text-gold-500 mb-3">[ SOBRE EL EVENTO ]</h2>
+      <p class="text-4xl md:text-5xl font-display font-black text-white tracking-tight">
+        ¿Qué es <span class="text-transparent bg-clip-text bg-gradient-to-r from-gold-500 to-burgundy-500">&lt;Carnero.Dev/&gt;</span>?
+      </p>
+      <div class="w-20 h-1 bg-gradient-to-r from-gold-500 to-burgundy-600 mx-auto mt-6 rounded-full"></div>
+      
+      <!-- Text explanation -->
+      <p class="mt-6 font-sans text-brand-white/70 max-w-3xl mx-auto text-base leading-relaxed">
+        Es el **hackathon tecnológico de referencia** organizado en el **ITR Roque por la carrera de TICs**. 
+        Una maratón de desarrollo de **36 horas consecutivas** donde los límites entre el código, la creatividad y la resistencia física desaparecen. 
+        Únete a estudiantes de ingeniería para idear, programar y lanzar proyectos que dejen huella.
+      </p>
+    </div>
+
+    <!-- Balanced Features Responsive Grid System -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 items-stretch">
+      {cards.map((c) => (
+        <div class={`glassmorphism bg-charcoal-900/40 p-6 md:p-8 rounded-3xl border flex flex-col justify-between h-full transition-all duration-300 hover:-translate-y-1 relative group overflow-hidden ${c.border}`}>
+          <div class="absolute top-0 right-0 w-20 h-20 bg-brand-white/[0.01] rounded-bl-full pointer-events-none group-hover:bg-brand-white/[0.03] transition-colors"></div>
+          
+          <div>
+            <!-- Header layout with badge -->
+            <div class="flex items-center justify-between mb-5.5">
+              <div class={`p-2.5 border rounded-xl group-hover:scale-105 transition-transform duration-300 ${c.iconBg}`} set:html={c.icon}></div>
+              <span class={`font-mono text-[9px] font-semibold border px-2.5 py-0.5 rounded-full tracking-wider ${c.bgBadge}`}>{c.tag}</span>
+            </div>
+            
+            <!-- Titles and contents -->
+            <h3 class="font-display font-bold text-lg text-white mb-2.5 group-hover:text-gold-400 transition-colors">{c.title}</h3>
+            <p class="font-sans text-xs text-brand-white/60 leading-relaxed">{c.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Interactive terminal decoration -->
+    <div class="mt-16 glassmorphism max-w-3xl mx-auto rounded-2xl overflow-hidden border border-burgundy-800/25 shadow-2xl relative">
+      <div class="bg-charcoal-950 px-4 py-2 border-b border-burgundy-900/20 flex items-center gap-2">
+        <div class="w-3 h-3 rounded-full bg-burgundy-700"></div>
+        <div class="w-3 h-3 rounded-full bg-gold-600"></div>
+        <div class="w-3 h-3 rounded-full bg-charcoal-800"></div>
+        <span class="font-mono text-[10px] text-brand-white/30 ml-2">carnero-terminal.sh</span>
+      </div>
+      <div class="p-5 font-mono text-xs md:text-sm text-left bg-charcoal-900/80 min-h-[140px] text-brand-white/80">
+        <div><span class="text-gold-500">$</span> cat event_rules.txt</div>
+        <div class="text-brand-white/40 mt-1">&gt; 1. Equipos de 3 a 5 integrantes matriculados en TICs o afines.</div>
+        <div class="text-brand-white/40">&gt; 2. Desarrollo 100% original iniciado en el bloque del Hackathon.</div>
+        <div class="text-brand-white/40">&gt; 3. Despliegues listos en producción y subidos a repositorios públicos.</div>
+        <div class="mt-3"><span class="text-gold-500">$</span> ./run_hackathon --target_roque</div>
+        <div class="text-gold-500 animate-pulse mt-1">[INIT] Cargando entorno hack. Hackers detectados. ¡Prepárate para codificar!</div>
+      </div>
+    </div>
+
+  </div>
+</section>

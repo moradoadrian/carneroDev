@@ -1,0 +1,141 @@
+---
+import Logo from './Logo.astro';
+---
+
+<section 
+  id="hero" 
+  class="relative min-h-screen flex items-center justify-center pt-24 overflow-hidden bg-dot-matrix"
+>
+  <!-- Cyber grids and overlays -->
+  <div class="absolute inset-0 bg-grid-cyber opacity-45 pointer-events-none z-0"></div>
+  
+  <!-- Glowing neon decorative orbs -->
+  <div class="absolute top-1/4 left-1/4 w-[300px] h-[300px] bg-burgundy-800/10 rounded-full blur-[120px] pointer-events-none animate-pulse-slow"></div>
+  <div class="absolute bottom-1/3 right-1/4 w-[400px] h-[400px] bg-gold-900/5 rounded-full blur-[150px] pointer-events-none animate-pulse-slow"></div>
+
+  <div class="relative z-10 max-w-5xl mx-auto px-4 text-center flex flex-col items-center">
+    
+    <!-- Floating Ram Logo Emblem -->
+    <div class="mb-6 animate-float flex flex-col items-center select-none">
+      <div class="relative w-40 h-40 md:w-48 md:h-48 rounded-full flex items-center justify-center bg-charcoal-900/60 backdrop-blur-md border border-gold-500/15 p-4 shadow-[0_0_50px_rgba(90,16,34,0.15)]">
+        <Logo className="w-full h-full" glow={true} />
+        <!-- Tech frame brackets -->
+        <span class="absolute top-2 left-2 text-gold-500/30 font-mono text-xs select-none">[SYS_READY]</span>
+        <span class="absolute bottom-2 right-2 text-burgundy-500/40 font-mono text-xs select-none">v1.0.42</span>
+      </div>
+    </div>
+
+    <!-- Subtitle Flag -->
+    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-burgundy-700/30 bg-burgundy-950/40 backdrop-blur-sm text-burgundy-300 font-mono text-xs md:text-sm tracking-wider uppercase mb-6 shadow-sm">
+      <span class="inline-block w-2 h-2 rounded-full bg-gold-500 animate-pulse"></span>
+      Hackathon • TICs ITR • Roque
+    </div>
+
+    <!-- Giant Glowing Title -->
+    <h1 class="text-5xl md:text-7xl lg:text-8xl font-display font-black tracking-tight text-white mb-6 relative font-mono">
+      &lt;<span class="text-transparent bg-clip-text bg-gradient-to-r from-gold-400 via-gold-500 to-burgundy-500 text-glow-gold">Carnero</span><span class="text-white hover:text-burgundy-500 transition-colors">.Dev</span>/&gt;
+    </h1>
+
+    <!-- Epic Slogan -->
+    <p class="font-mono text-lg md:text-2xl text-brand-white/80 max-w-2xl mb-10 tracking-widest uppercase">
+      Build. <span class="text-gold-500">Code.</span> Innovate.
+    </p>
+
+    <!-- Interactive Countdown Timer Grid -->
+    <div class="grid grid-cols-4 gap-2.5 md:gap-4 max-w-lg w-full mb-12 select-none">
+      <div class="glassmorphism bg-charcoal-900/80 rounded-xl p-3 md:p-4 text-center border-t-2 border-t-gold-500 relative overflow-hidden group">
+        <div id="days" class="text-2xl md:text-4xl font-mono font-bold text-gold-400">00</div>
+        <div class="text-[10px] md:text-xs font-mono text-brand-white/50 uppercase tracking-wider mt-1">Días</div>
+        <div class="absolute -right-2 -bottom-2 text-3xl font-mono font-black text-brand-white/5 opacity-5 group-hover:scale-110 transition-transform">D</div>
+      </div>
+      <div class="glassmorphism bg-charcoal-900/80 rounded-xl p-3 md:p-4 text-center border-t-2 border-t-burgundy-600 relative overflow-hidden group">
+        <div id="hours" class="text-2xl md:text-4xl font-mono font-bold text-brand-white">00</div>
+        <div class="text-[10px] md:text-xs font-mono text-brand-white/50 uppercase tracking-wider mt-1">Horas</div>
+        <div class="absolute -right-2 -bottom-2 text-3xl font-mono font-black text-brand-white/5 opacity-5 group-hover:scale-110 transition-transform">H</div>
+      </div>
+      <div class="glassmorphism bg-charcoal-900/80 rounded-xl p-3 md:p-4 text-center border-t-2 border-t-burgundy-600 relative overflow-hidden group">
+        <div id="minutes" class="text-2xl md:text-4xl font-mono font-bold text-brand-white">00</div>
+        <div class="text-[10px] md:text-xs font-mono text-brand-white/50 uppercase tracking-wider mt-1">Minutos</div>
+        <div class="absolute -right-2 -bottom-2 text-3xl font-mono font-black text-brand-white/5 opacity-5 group-hover:scale-110 transition-transform">M</div>
+      </div>
+      <div class="glassmorphism bg-charcoal-900/80 rounded-xl p-3 md:p-4 text-center border-t-2 border-t-gold-500 relative overflow-hidden group">
+        <div id="seconds" class="text-2xl md:text-4xl font-mono font-bold text-gold-500 animate-pulse">00</div>
+        <div class="text-[10px] md:text-xs font-mono text-brand-white/50 uppercase tracking-wider mt-1">Segundos</div>
+        <div class="absolute -right-2 -bottom-2 text-3xl font-mono font-black text-brand-white/5 opacity-5 group-hover:scale-110 transition-transform">S</div>
+      </div>
+    </div>
+
+    <!-- Call to Actions -->
+    <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto z-10 justify-center">
+      <!-- Register Button -->
+      <a 
+        href="#register" 
+        class="font-mono px-8 py-4 rounded-full font-bold bg-gradient-to-r from-burgundy-800 to-gold-600 text-white hover:from-burgundy-700 hover:to-gold-500 transition-all duration-300 text-center shadow-[0_0_25px_rgba(90,16,34,0.3)] hover:shadow-[0_0_35px_rgba(217,164,65,0.45)] hover:scale-105 active:scale-95 border border-gold-500/20"
+      >
+        [ Registrarse Ahora ]
+      </a>
+      <!-- Bases Button -->
+      <a 
+        href="#bases" 
+        class="font-mono px-8 py-4 rounded-full font-bold border border-brand-white/30 text-brand-white bg-charcoal-900/40 hover:bg-brand-white/10 hover:border-gold-500 transition-all duration-300 text-center backdrop-blur-sm shadow-md hover:scale-105 active:scale-95"
+      >
+        Ver Bases del Evento
+      </a>
+    </div>
+
+  </div>
+
+  <!-- Decorative Corner Brackets (Cyber UI) -->
+  <div class="absolute top-10 left-10 w-16 h-16 border-t-2 border-l-2 border-gold-500/20 pointer-events-none hidden md:block"></div>
+  <div class="absolute top-10 right-10 w-16 h-16 border-t-2 border-r-2 border-gold-500/20 pointer-events-none hidden md:block"></div>
+  <div class="absolute bottom-10 left-10 w-16 h-16 border-b-2 border-l-2 border-burgundy-800/20 pointer-events-none hidden md:block"></div>
+  <div class="absolute bottom-10 right-10 w-16 h-16 border-b-2 border-r-2 border-burgundy-800/20 pointer-events-none hidden md:block"></div>
+
+  <!-- Scroll Down Indicator -->
+  <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 opacity-60 hover:opacity-100 transition-opacity">
+    <span class="font-mono text-[10px] tracking-widest text-brand-white/40 uppercase">Descubrir</span>
+    <a href="#about" class="animate-bounce p-1 focus:outline-none" aria-label="Desplazarse abajo">
+      <svg class="w-5 h-5 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+      </svg>
+    </a>
+  </div>
+</section>
+
+<!-- Countdown Script -->
+<script>
+  // Event starting date: October 16, 2026, 09:00:00 AM
+  const targetDate = new Date('October 16, 2026 09:00:00').getTime();
+
+  const daysEl = document.getElementById('days');
+  const hoursEl = document.getElementById('hours');
+  const minsEl = document.getElementById('minutes');
+  const secsEl = document.getElementById('seconds');
+
+  function updateCountdown() {
+    const now = new Date().getTime();
+    const difference = targetDate - now;
+
+    if (difference <= 0) {
+      if (daysEl) daysEl.innerText = '00';
+      if (hoursEl) hoursEl.innerText = '00';
+      if (minsEl) minsEl.innerText = '00';
+      if (secsEl) secsEl.innerText = '00';
+      return;
+    }
+
+    const d = Math.floor(difference / (1000 * 60 * 60 * 24));
+    const h = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const m = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+    const s = Math.floor((difference % (1000 * 60)) / 1000);
+
+    if (daysEl) daysEl.innerText = String(d).padStart(2, '0');
+    if (hoursEl) hoursEl.innerText = String(h).padStart(2, '0');
+    if (minsEl) minsEl.innerText = String(m).padStart(2, '0');
+    if (secsEl) secsEl.innerText = String(s).padStart(2, '0');
+  }
+
+  // Initial and poll interval
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+</script>

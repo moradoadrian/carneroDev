@@ -1,0 +1,118 @@
+---
+const sponsors = [
+  {
+    name: 'GitHub',
+    tier: 'Diamond Partner',
+    desc: 'Repositorios públicos & Github Copilot',
+    icon: `<svg class="w-10 h-10 group-hover:text-white transition-colors" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" /></svg>`,
+    glow: 'group-hover:border-brand-white/40 group-hover:shadow-[0_0_25px_rgba(255,255,255,0.06)]'
+  },
+  {
+    name: 'JetBrains',
+    tier: 'Gold Partner',
+    desc: 'Licencias de software para desarrollo',
+    icon: `<svg class="w-10 h-10 group-hover:text-gold-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>`, // Replace with generic IDE code logo
+    iconCustom: `<svg class="w-10 h-10 group-hover:text-gold-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>`,
+    glow: 'group-hover:border-gold-500/40 group-hover:shadow-[0_0_25px_rgba(217,164,65,0.1)]'
+  },
+  {
+    name: 'Vercel',
+    tier: 'Hosting Partner',
+    desc: 'Despliegues rápidos e infraestructura Serverless',
+    icon: `<svg class="w-10 h-10 group-hover:text-white transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 22h20L12 2z" /></svg>`,
+    glow: 'group-hover:border-brand-white/40 group-hover:shadow-[0_0_25px_rgba(255,255,255,0.06)]'
+  },
+  {
+    name: 'Hack The Box',
+    tier: 'Security Partner',
+    desc: 'Entornos de auditoría y pentesting',
+    icon: `<svg class="w-10 h-10 group-hover:text-burgundy-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>`,
+    glow: 'group-hover:border-burgundy-600/50 group-hover:shadow-[0_0_25px_rgba(90,16,34,0.12)]'
+  },
+  {
+    name: 'Arduino',
+    tier: 'Hardware Partner',
+    desc: 'Microcontroladores oficiales para IoT',
+    icon: `<svg class="w-10 h-10 group-hover:text-gold-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/></svg>`,
+    glow: 'group-hover:border-gold-500/40 group-hover:shadow-[0_0_25px_rgba(217,164,65,0.1)]'
+  },
+  {
+    name: 'ITR Roque - TICs',
+    tier: 'Host Principal',
+    desc: 'Academia & Organizadores del Evento',
+    icon: `<svg class="w-10 h-10 group-hover:text-burgundy-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" /></svg>`,
+    glow: 'group-hover:border-burgundy-600/50 group-hover:shadow-[0_0_25px_rgba(90,16,34,0.12)]'
+  }
+];
+---
+
+<section 
+  id="sponsors" 
+  class="relative py-28 px-4 overflow-hidden bg-charcoal-900 border-t border-burgundy-900/10"
+>
+  <!-- Background tech elements -->
+  <div class="absolute inset-0 bg-dot-matrix opacity-10 pointer-events-none z-0"></div>
+
+  <div class="max-w-6xl mx-auto relative z-10">
+    
+    <!-- Title -->
+    <div class="text-center mb-24">
+      <h2 class="font-mono text-xs uppercase tracking-widest text-gold-500 mb-3">[ TECH ALLIANCE ]</h2>
+      <p class="text-4xl md:text-5xl font-display font-black text-white tracking-tight">
+        Nuestros Patrocinadores
+      </p>
+      <div class="w-20 h-1 bg-gradient-to-r from-gold-500 to-burgundy-600 mx-auto mt-6 rounded-full"></div>
+      
+      <p class="mt-6 font-sans text-brand-white/60 max-w-2xl mx-auto text-base">
+        Empresas y organizaciones líderes que impulsan el desarrollo de la cultura hacker y la innovación tecnológica universitaria.
+      </p>
+    </div>
+
+    <!-- Elegant Monochrome Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+      {sponsors.map(sp => (
+        <div class={`glassmorphism bg-charcoal-900/40 p-8 rounded-3xl border border-burgundy-800/10 transition-all duration-300 group flex items-start gap-5 hover:-translate-y-1 ${sp.glow}`}>
+          
+          <!-- Logo container with greyscale transition -->
+          <div class="p-4 bg-charcoal-950 border border-charcoal-800 rounded-2xl text-brand-white/30 group-hover:scale-105 group-hover:border-gold-500/10 transition-all duration-300">
+            {sp.name === 'JetBrains' ? <div set:html={sp.iconCustom} /> : <div set:html={sp.icon} />}
+          </div>
+
+          <!-- Metadata -->
+          <div>
+            <h3 class="font-display font-bold text-lg text-white/95 group-hover:text-gold-400 transition-colors mb-0.5">
+              {sp.name}
+            </h3>
+            
+            <span class="font-mono text-[9px] font-semibold text-gold-500 uppercase tracking-widest block mb-2">
+              {sp.tier}
+            </span>
+            
+            <p class="font-sans text-xs text-brand-white/50 leading-relaxed">
+              {sp.desc}
+            </p>
+          </div>
+
+        </div>
+      ))}
+    </div>
+
+    <!-- Bottom call to action for sponsors -->
+    <div class="mt-20 text-center glassmorphism bg-burgundy-950/20 max-w-3xl mx-auto rounded-3xl p-8 border border-burgundy-800/25 relative overflow-hidden group">
+      <div class="absolute -right-6 -bottom-6 w-24 h-24 bg-gold-500/5 rounded-full pointer-events-none group-hover:bg-gold-500/10 transition-all"></div>
+      
+      <h4 class="font-display font-bold text-xl text-white mb-2">¿Quieres patrocinar el Hackathon?</h4>
+      <p class="font-sans text-sm text-brand-white/70 max-w-xl mx-auto mb-6">
+        Posiciona tu marca frente a cientos de ingenieros, programadores y creativos de alto nivel tecnológico en el ITR Roque.
+      </p>
+      
+      <a 
+        href="mailto:sponsor@carnero.dev" 
+        class="font-mono inline-block px-6 py-3 rounded-full font-bold border border-gold-500 text-gold-400 bg-gold-500/5 hover:bg-gold-500 hover:text-charcoal-950 transition-all duration-300 shadow-[0_0_15px_rgba(217,164,65,0.05)] hover:shadow-[0_0_20px_rgba(217,164,65,0.25)]"
+      >
+        [ Descargar Kit de Patrocinio ]
+      </a>
+    </div>
+
+  </div>
+</section>

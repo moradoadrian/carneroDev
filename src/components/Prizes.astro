@@ -1,0 +1,209 @@
+---
+const specialRecognitions = [
+  {
+    title: 'Mención de Innovación Disruptiva',
+    desc: 'Medalla física especial e insignia digital para el equipo que presente la arquitectura de software o integración técnica más audaz.',
+    icon: `<svg class="w-6 h-6 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>`
+  },
+  {
+    title: 'Mención de Diseño & UX',
+    desc: 'Reconocimiento especial al equipo con el producto digital más estético, usable y centrado en la experiencia del usuario final.',
+    icon: `<svg class="w-6 h-6 text-burgundy-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>`
+  },
+  {
+    title: 'Más Aliados & Herramientas',
+    desc: 'Estamos en pláticas activas con más patrocinadores locales para sumar licencias de software, kits de hardware y premios en especie.',
+    icon: `<svg class="w-6 h-6 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>`
+  }
+];
+---
+
+<section 
+  id="prizes" 
+  class="relative py-28 px-4 overflow-hidden bg-charcoal-950"
+>
+  <div class="absolute inset-0 bg-grid-cyber opacity-10 pointer-events-none z-0"></div>
+  
+  <div class="max-w-6xl mx-auto relative z-10">
+    
+    <!-- Title -->
+    <div class="text-center mb-24">
+      <h2 class="font-mono text-xs uppercase tracking-widest text-gold-500 mb-3">[ HACKATHON REWARDS ]</h2>
+      <p class="text-4xl md:text-5xl font-display font-black text-white tracking-tight">
+        Premios & Incentivos
+      </p>
+      <div class="w-20 h-1 bg-gradient-to-r from-gold-500 to-burgundy-600 mx-auto mt-6 rounded-full"></div>
+      
+      <p class="mt-6 font-sans text-brand-white/60 max-w-2xl mx-auto text-base leading-relaxed">
+        Un evento **impulsado por estudiantes y apoyado por la comunidad**. Diseñamos una bolsa de premios realista y motivadora 
+        enfocada en impulsar el desarrollo de tus habilidades, tu portafolio profesional y tu crecimiento en ingeniería.
+      </p>
+    </div>
+
+    <!-- Esports Podium Layout -->
+    <div class="flex flex-col lg:flex-row items-stretch justify-center gap-8 mb-16">
+      
+      <!-- 2ND PLACE (SILVER) -->
+      <div class="glassmorphism bg-charcoal-900/40 border border-burgundy-800/10 hover:border-burgundy-600/40 rounded-3xl p-8 flex flex-col justify-between items-center text-center w-full lg:w-80 transition-all duration-300 hover:-translate-y-1 lg:order-1 relative overflow-hidden group">
+        <div class="absolute -right-6 -top-6 w-24 h-24 bg-burgundy-800/5 rounded-full pointer-events-none group-hover:bg-burgundy-800/10 transition-all"></div>
+        
+        <div>
+          <!-- Badge -->
+          <span class="font-mono text-[9px] font-semibold text-burgundy-400 bg-burgundy-950/60 border border-burgundy-800/30 px-3 py-1 rounded-full tracking-wider uppercase mb-8 inline-block">
+            🥈 SEGUNDO LUGAR
+          </span>
+
+          <!-- Medal Illustration (Silver SVG) -->
+          <div class="w-20 h-20 mx-auto mb-6 flex items-center justify-center relative bg-charcoal-950 border border-charcoal-800 rounded-full group-hover:scale-105 transition-transform duration-300">
+            <svg class="w-10 h-10 text-brand-white/80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+            </svg>
+            <div class="absolute inset-0 border border-brand-white/10 rounded-full animate-ping opacity-10"></div>
+          </div>
+
+          <!-- Cash Reward -->
+          <h3 class="font-display font-black text-3xl text-brand-white mb-2 tracking-tight">
+            $2,000 MXN
+          </h3>
+          <p class="font-sans text-xs text-brand-white/50 mb-6 max-w-[200px] mx-auto">
+            Bolsa en efectivo para el equipo + Certificado oficial de plata.
+          </p>
+        </div>
+
+        <!-- Details -->
+        <ul class="w-full text-left border-t border-burgundy-900/20 pt-6 space-y-3">
+          <li class="flex items-center gap-2 text-xs text-brand-white/60">
+            <span class="text-gold-500 font-mono">&gt;</span> Certificado oficial de plata
+          </li>
+          <li class="flex items-center gap-2 text-xs text-brand-white/60">
+            <span class="text-gold-500 font-mono">&gt;</span> Mercancía oficial del Hackathon
+          </li>
+          <li class="flex items-center gap-2 text-xs text-brand-white/60">
+            <span class="text-gold-500 font-mono">&gt;</span> Kit de goodies de patrocinadores
+          </li>
+        </ul>
+      </div>
+
+      <!-- 1ST PLACE (GOLD) -->
+      <div class="glassmorphism bg-charcoal-900/60 border border-gold-500/20 hover:border-gold-500/50 rounded-3xl p-8 flex flex-col justify-between items-center text-center w-full lg:w-96 transition-all duration-300 hover:-translate-y-2 lg:-translate-y-4 lg:order-2 relative overflow-hidden shadow-[0_0_50px_rgba(217,164,65,0.03)] hover:shadow-[0_0_50px_rgba(217,164,65,0.15)] group">
+        <!-- Golden glowing particles inside card -->
+        <div class="absolute -right-6 -top-6 w-32 h-32 bg-gold-500/5 rounded-full pointer-events-none group-hover:bg-gold-500/10 transition-all"></div>
+        <div class="absolute -left-12 -bottom-12 w-32 h-32 bg-burgundy-800/5 rounded-full pointer-events-none"></div>
+
+        <div>
+          <!-- Badge -->
+          <span class="font-mono text-[10px] font-bold text-gold-400 bg-gold-500/5 border border-gold-500/30 px-4 py-1.5 rounded-full tracking-widest uppercase mb-8 inline-block animate-pulse-slow">
+            🏆 PRIMER LUGAR
+          </span>
+
+          <!-- Trophy Illustration (Gold SVG) -->
+          <div class="w-28 h-28 mx-auto mb-6 flex items-center justify-center relative bg-charcoal-950 border border-gold-500/15 rounded-full group-hover:scale-105 transition-transform duration-500 shadow-[0_0_20px_rgba(217,164,65,0.05)]">
+            <svg class="w-12 h-12 text-gold-500 glow-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
+            </svg>
+            <div class="absolute inset-0 border border-gold-500/20 rounded-full animate-ping opacity-20"></div>
+          </div>
+
+          <!-- Cash Reward -->
+          <h3 class="font-display font-black text-4xl text-gold-400 text-glow-gold mb-2 tracking-tight">
+            $3,000 MXN
+          </h3>
+          <p class="font-sans text-xs text-brand-white/70 mb-6 max-w-[240px] mx-auto font-semibold">
+            Bolsa en efectivo para el equipo + Certificado oficial de oro.
+          </p>
+        </div>
+
+        <!-- Details -->
+        <ul class="w-full text-left border-t border-gold-500/15 pt-6 space-y-3.5">
+          <li class="flex items-center gap-2 text-xs text-brand-white/80">
+            <span class="text-gold-500 font-mono font-bold">&gt;</span> Certificado oficial de oro
+          </li>
+          <li class="flex items-center gap-2 text-xs text-brand-white/80">
+            <span class="text-gold-500 font-mono font-bold">&gt;</span> Kit de swag de patrocinador premium
+          </li>
+          <li class="flex items-center gap-2 text-xs text-brand-white/80">
+            <span class="text-gold-500 font-mono font-bold">&gt;</span> Reconocimiento en redes institucionales
+          </li>
+          <li class="flex items-center gap-2 text-xs text-brand-white/80">
+            <span class="text-gold-500 font-mono font-bold">&gt;</span> Posible oportunidad de mentoría profesional
+          </li>
+        </ul>
+      </div>
+
+      <!-- 3RD PLACE (BRONZE) -->
+      <div class="glassmorphism bg-charcoal-900/40 border border-burgundy-800/10 hover:border-burgundy-600/40 rounded-3xl p-8 flex flex-col justify-between items-center text-center w-full lg:w-80 transition-all duration-300 hover:-translate-y-1 lg:order-3 relative overflow-hidden group">
+        <div class="absolute -right-6 -top-6 w-24 h-24 bg-burgundy-800/5 rounded-full pointer-events-none group-hover:bg-burgundy-800/10 transition-all"></div>
+
+        <div>
+          <!-- Badge -->
+          <span class="font-mono text-[9px] font-semibold text-gold-600 bg-gold-950/20 border border-gold-900/30 px-3 py-1 rounded-full tracking-wider uppercase mb-8 inline-block">
+            🥉 TERCER LUGAR
+          </span>
+
+          <!-- Medal Illustration (Bronze SVG) -->
+          <div class="w-20 h-20 mx-auto mb-6 flex items-center justify-center relative bg-charcoal-950 border border-charcoal-800 rounded-full group-hover:scale-105 transition-transform duration-300">
+            <svg class="w-10 h-10 text-gold-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+            </svg>
+            <div class="absolute inset-0 border border-gold-800/10 rounded-full animate-ping opacity-10"></div>
+          </div>
+
+          <!-- Cash Reward -->
+          <h3 class="font-display font-black text-3xl text-brand-white mb-2 tracking-tight">
+            $1,000 MXN
+          </h3>
+          <p class="font-sans text-xs text-brand-white/50 mb-6 max-w-[200px] mx-auto">
+            Bolsa en efectivo para el equipo + Certificado oficial de bronce.
+          </p>
+        </div>
+
+        <!-- Details -->
+        <ul class="w-full text-left border-t border-burgundy-900/20 pt-6 space-y-3">
+          <li class="flex items-center gap-2 text-xs text-brand-white/60">
+            <span class="text-gold-500 font-mono">&gt;</span> Certificado oficial de bronce
+          </li>
+          <li class="flex items-center gap-2 text-xs text-brand-white/60">
+            <span class="text-gold-500 font-mono">&gt;</span> Reconocimiento y mención de la comunidad
+          </li>
+          <li class="flex items-center gap-2 text-xs text-brand-white/60">
+            <span class="text-gold-500 font-mono">&gt;</span> Insignias digitales para portafolio (LinkedIn)
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Redesigned Category Perks & Disclaimers -->
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <div class="inline-flex items-center gap-2.5 px-4.5 py-2 rounded-xl bg-gold-500/5 border border-gold-500/20 text-gold-400 font-mono text-xs shadow-sm mb-4">
+        <span class="inline-block w-1.5 h-1.5 rounded-full bg-gold-500 animate-ping"></span>
+        Más premios y herramientas físicas podrán ser anunciados junto a nuestros patrocinadores
+      </div>
+      <p class="font-sans text-xs text-brand-white/40 leading-relaxed">
+        * Todos los incentivos monetarios son bolsas únicas por equipo y se entregarán al finalizar la deliberación del jurado calificador.
+      </p>
+    </div>
+
+    <!-- Special Recognitions Header -->
+    <div class="text-center mb-10">
+      <h3 class="font-mono text-xs uppercase tracking-widest text-burgundy-400 mb-2">[ SPECIAL MENTIONS ]</h3>
+      <p class="text-xl md:text-2xl font-display font-bold text-white tracking-tight">
+        Reconocimientos Especiales a la Innovación y Creatividad
+      </p>
+    </div>
+
+    <!-- Special Category Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 max-w-5xl mx-auto">
+      {specialRecognitions.map(p => (
+        <div class="glassmorphism bg-charcoal-900/40 p-6 rounded-2xl border border-burgundy-800/5 hover:border-gold-500/15 transition-all duration-300 relative group flex items-start gap-4">
+          <div class="p-3 bg-charcoal-950 border border-charcoal-800 rounded-xl group-hover:scale-105 transition-transform" set:html={p.icon}></div>
+          <div>
+            <h4 class="font-display font-bold text-sm text-white mb-1.5 group-hover:text-gold-400 transition-colors">{p.title}</h4>
+            <p class="font-sans text-xs text-brand-white/60 leading-relaxed">{p.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

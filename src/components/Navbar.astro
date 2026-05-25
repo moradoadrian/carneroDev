@@ -1,0 +1,172 @@
+---
+import Logo from './Logo.astro';
+
+const navLinks = [
+  { name: 'Inicio', href: '#hero' },
+  { name: 'Info', href: '#about' },
+  { name: 'Tracks', href: '#tracks' },
+  { name: 'Calendario', href: '#timeline' },
+  { name: 'Premios', href: '#prizes' },
+  { name: 'Mentores', href: '#speakers' },
+  { name: 'FAQ', href: '#faq' },
+];
+---
+
+<header id="main-header" class="fixed top-0 left-0 w-full z-40 transition-all duration-300 py-6 px-4 md:px-8">
+  <div class="max-w-7xl mx-auto">
+    <!-- Navbar Shell -->
+    <nav class="glassmorphism rounded-full px-6 py-3 flex items-center justify-between transition-all duration-300 shadow-lg border border-gold-500/10">
+      
+      <!-- Brand Logo -->
+      <a href="#hero" class="flex items-center gap-3 group focus:outline-none select-none">
+        <div class="relative overflow-visible">
+          <Logo className="w-8 h-8 md:w-9 md:h-9 group-hover:scale-110" glow={false} />
+          <div class="absolute inset-0 bg-gold-500/20 blur-md rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        </div>
+        <span class="font-mono font-bold text-lg md:text-xl tracking-tight text-white group-hover:text-gold-400 transition-colors">
+          &lt;<span class="text-gold-500">Carnero</span><span class="text-burgundy-500">.Dev</span>/&gt;
+        </span>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <ul class="hidden lg:flex items-center gap-8">
+        {navLinks.map(link => (
+          <li>
+            <a 
+              href={link.href} 
+              class="font-mono text-sm font-medium text-brand-white/80 hover:text-gold-400 transition-colors relative py-1 focus:outline-none group"
+            >
+              {link.name}
+              <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-burgundy-600 to-gold-500 transition-all duration-300 group-hover:w-full"></span>
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <!-- Desktop Call to Action -->
+      <div class="hidden lg:flex items-center gap-4">
+        <a 
+          href="#register" 
+          class="font-mono text-sm px-5 py-2.5 rounded-full font-semibold border border-gold-500 text-gold-400 bg-gold-500/5 hover:bg-gold-500 hover:text-charcoal-950 transition-all duration-300 focus:outline-none shadow-[0_0_15px_rgba(217,164,65,0.05)] hover:shadow-[0_0_20px_rgba(217,164,65,0.3)] hover:scale-105 active:scale-95"
+        >
+          Registrarse
+        </a>
+      </div>
+
+      <!-- Mobile Hamburger Button -->
+      <button 
+        id="mobile-menu-toggle" 
+        class="lg:hidden text-brand-white focus:outline-none p-1 rounded-md hover:bg-charcoal-800 transition-colors"
+        aria-label="Toggle Menu"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path id="hamburger-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          <path id="close-icon" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+
+    </nav>
+  </div>
+
+  <!-- Mobile Drawer Menu -->
+  <div 
+    id="mobile-drawer" 
+    class="lg:hidden fixed inset-x-0 top-[88px] mx-4 rounded-3xl glassmorphism-burgundy border border-burgundy-800/30 overflow-hidden max-h-0 opacity-0 transition-all duration-300 pointer-events-none"
+  >
+    <ul class="flex flex-col p-6 gap-4">
+      {navLinks.map(link => (
+        <li>
+          <a 
+            href={link.href} 
+            class="font-mono block py-2.5 px-4 text-brand-white/90 hover:text-gold-400 hover:bg-burgundy-950/40 rounded-xl transition-all"
+          >
+            {link.name}
+          </a>
+        </li>
+      ))}
+      <li class="pt-4 border-t border-burgundy-900/30">
+        <a 
+          href="#register" 
+          class="font-mono block text-center w-full py-3 px-6 rounded-xl font-bold bg-gradient-to-r from-burgundy-800 to-gold-600 text-white hover:from-burgundy-700 hover:to-gold-500 transition-all duration-300 shadow-md"
+        >
+          Registrarse
+        </a>
+      </li>
+    </ul>
+  </div>
+</header>
+
+<script>
+  const header = document.getElementById('main-header');
+  const toggleBtn = document.getElementById('mobile-menu-toggle');
+  const drawer = document.getElementById('mobile-drawer');
+  const hamburgerIcon = document.getElementById('hamburger-icon');
+  const closeIcon = document.getElementById('close-icon');
+  const navLinks = drawer?.querySelectorAll('a');
+
+  // Sticky header effects on scroll
+  window.addEventListener('scroll', () => {
+    if (header) {
+      if (window.scrollY > 20) {
+        header.classList.remove('py-6');
+        header.classList.add('py-3');
+        // Make navigation glass thicker
+        const nav = header.querySelector('nav');
+        if (nav) {
+          nav.classList.add('bg-charcoal-900/90', 'shadow-2xl');
+        }
+      } else {
+        header.classList.remove('py-3');
+        header.classList.add('py-6');
+        const nav = header.querySelector('nav');
+        if (nav) {
+          nav.classList.remove('bg-charcoal-900/90', 'shadow-2xl');
+        }
+      }
+    }
+  });
+
+  // Mobile menu toggle open/close
+  function toggleMobileMenu() {
+    if (!drawer || !hamburgerIcon || !closeIcon) return;
+    
+    const isOpen = drawer.classList.contains('pointer-events-auto');
+    
+    if (isOpen) {
+      // Close
+      drawer.classList.remove('pointer-events-auto', 'opacity-100');
+      drawer.classList.add('pointer-events-none', 'opacity-0');
+      drawer.style.maxHeight = '0';
+      hamburgerIcon.classList.remove('hidden');
+      closeIcon.classList.add('hidden');
+    } else {
+      // Open
+      drawer.classList.remove('pointer-events-none', 'opacity-0');
+      drawer.classList.add('pointer-events-auto', 'opacity-100');
+      drawer.style.maxHeight = '400px';
+      hamburgerIcon.classList.add('hidden');
+      closeIcon.classList.remove('hidden');
+    }
+  }
+
+  toggleBtn?.addEventListener('click', toggleMobileMenu);
+
+  // Close menu when a link is clicked
+  navLinks?.forEach(link => {
+    link.addEventListener('click', () => {
+      if (drawer?.classList.contains('pointer-events-auto')) {
+        toggleMobileMenu();
+      }
+    });
+  });
+
+  // Close menu when clicking outside
+  document.addEventListener('click', (event) => {
+    const target = event.target as HTMLElement;
+    if (drawer && toggleBtn && !drawer.contains(target) && !toggleBtn.contains(target)) {
+      if (drawer.classList.contains('pointer-events-auto')) {
+        toggleMobileMenu();
+      }
+    }
+  });
+</script>

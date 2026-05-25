@@ -1,0 +1,23 @@
+---
+interface Props {
+  className?: string;
+  glow?: boolean;
+}
+
+const { className = "w-24 h-24", glow = true } = Astro.props;
+---
+
+<div class="relative inline-block overflow-visible select-none">
+  <!-- Glowing shadow overlay behind the logo -->
+  {glow && (
+    <div class="absolute inset-0 bg-gradient-to-tr from-burgundy-800/20 to-gold-500/20 blur-xl rounded-full opacity-60 pointer-events-none transition-opacity group-hover:opacity-100 duration-500 scale-95"></div>
+  )}
+  
+  <img 
+    src="/carneroDev-removebg-preview.png" 
+    alt="Carnero.Dev Hackathon Logo" 
+    class={`${className} object-contain transition-all duration-300 relative z-10 ${glow ? 'drop-shadow-[0_0_15px_rgba(217,164,65,0.35)] hover:drop-shadow-[0_0_25px_rgba(217,164,65,0.5)]' : ''}`}
+    loading="eager"
+    decoding="async"
+  />
+</div>
