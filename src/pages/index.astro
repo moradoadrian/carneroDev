@@ -62,3 +62,179 @@ import Footer from '../components/Footer.astro';
   <!-- Dynamic Footer Section -->
   <Footer />
 </Layout>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  // Register ScrollTrigger plugin
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Setup GSAP Context for memory cleanup
+  let ctx: any;
+
+  const initAnimations = () => {
+    // Respect accessibility settings (prefers-reduced-motion)
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    ctx = gsap.context(() => {
+      // Configuration for subtle, non-destructive animations
+      const duration = prefersReducedMotion ? 0.2 : 0.8;
+      const staggerDelay = prefersReducedMotion ? 0 : 0.05;
+      const yOffset = prefersReducedMotion ? 0 : 15; // Very subtle vertical shift
+      const blurAmount = prefersReducedMotion ? "blur(0px)" : "blur(6px)";
+
+      // --- HERO LOAD ANIMATIONS ---
+      const tl = gsap.timeline();
+
+      // Subtle slide down for flag
+      tl.from('#hero .inline-flex', {
+        opacity: 0,
+        y: prefersReducedMotion ? 0 : -10,
+        duration: duration,
+        ease: 'power2.out',
+        clearProps: 'transform,opacity'
+      });
+
+      // Soft logo scale-in and blur fade
+      tl.from('#hero .animate-float', {
+        opacity: 0,
+        scale: prefersReducedMotion ? 1 : 0.96,
+        filter: blurAmount,
+        duration: prefersReducedMotion ? 0.2 : 1.0,
+        ease: 'power2.out',
+        clearProps: 'transform,opacity,filter'
+      }, '-=0.4');
+
+      // Title fade up
+      tl.from('#hero h1', {
+        opacity: 0,
+        y: yOffset,
+        duration: duration,
+        ease: 'power3.out',
+        clearProps: 'transform,opacity'
+      }, '-=0.6');
+
+      // Slogan fade up
+      tl.from('#hero p.font-mono', {
+        opacity: 0,
+        y: yOffset,
+        duration: duration,
+        ease: 'power2.out',
+        clearProps: 'transform,opacity'
+      }, '-=0.5');
+
+      // Countdown cards stagger pop-in
+      tl.from('#hero .grid > div', {
+        opacity: 0,
+        y: yOffset,
+        scale: prefersReducedMotion ? 1 : 0.98,
+        filter: blurAmount,
+        duration: duration,
+        stagger: staggerDelay,
+        ease: 'power2.out',
+        clearProps: 'all' // Restores flex/grid flows and hover states
+      }, '-=0.4');
+
+      // CTA buttons fade-in & pop
+      tl.from('#hero .flex.flex-col > a', {
+        opacity: 0,
+        y: yOffset,
+        duration: duration,
+        stagger: staggerDelay,
+        ease: 'power2.out',
+        clearProps: 'all'
+      }, '-=0.3');
+
+      // --- SCROLLTRIGGER REVEALS ---
+
+      // Subtle slide-up & fade-in for section headers
+      const sections = ['#about', '#desafio', '#evaluacion', '#entregables', '#bases-resumen', '#timeline', '#prizes', '#invitados', '#faq', '#sponsors'];
+      
+      sections.forEach(selector => {
+        const section = document.querySelector(selector);
+        if (!section) return;
+
+        const titleDiv = section.querySelector('.text-center');
+        if (titleDiv) {
+          gsap.from(titleDiv, {
+            scrollTrigger: {
+              trigger: section,
+              start: 'top 85%',
+              toggleActions: 'play none none none'
+            },
+            opacity: 0,
+            y: yOffset,
+            filter: blurAmount,
+            duration: duration,
+            ease: 'power2.out',
+            clearProps: 'transform,opacity,filter'
+          });
+        }
+      });
+
+      // Subtle staggered reveals for cards
+      const staggerConfigs = [
+        { trigger: '#desafio', targets: '#desafio .grid > div', stagger: 0.04 },
+        { trigger: '#evaluacion', targets: '#evaluacion .grid > div', stagger: 0.04 },
+        { trigger: '#entregables', targets: '#entregables .grid > div', stagger: 0.04 },
+        { trigger: '#bases-resumen', targets: '#bases-resumen .grid > div', stagger: 0.05 },
+        { trigger: '#prizes', targets: '#prizes .flex.flex-col > div', stagger: 0.06 }
+      ];
+
+      staggerConfigs.forEach(cfg => {
+        const triggerEl = document.querySelector(cfg.trigger);
+        if (!triggerEl) return;
+
+        gsap.from(cfg.targets, {
+          scrollTrigger: {
+            trigger: triggerEl,
+            start: 'top 75%',
+            toggleActions: 'play none none none'
+          },
+          opacity: 0,
+          y: yOffset,
+          scale: prefersReducedMotion ? 1 : 0.98,
+          filter: blurAmount,
+          duration: duration,
+          stagger: cfg.stagger,
+          ease: 'power2.out',
+          clearProps: 'all' // Crucial: removes inline transform/opacity so Tailwind hover: states work perfectly
+        });
+      });
+
+      // Grow Evaluation progress bars on view
+      const evalSection = document.querySelector('#evaluacion');
+      if (evalSection) {
+        const progressBars = evalSection.querySelectorAll('.gsap-progress-bar');
+        
+        progressBars.forEach(bar => {
+          const targetPercent = bar.getAttribute('data-percent') || '0%';
+          
+          gsap.to(bar, {
+            scrollTrigger: {
+              trigger: evalSection,
+              start: 'top 75%',
+              toggleActions: 'play none none none'
+            },
+            width: targetPercent,
+            duration: prefersReducedMotion ? 0.3 : 1.2,
+            ease: 'power2.out'
+          });
+        });
+      }
+    });
+  };
+
+  // Run animations on DOM ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAnimations);
+  } else {
+    initAnimations();
+  }
+
+  // Cleanup on page transitions/unmount (memory safety)
+  window.addEventListener('unload', () => {
+    if (ctx) ctx.revert();
+  });
+</script>

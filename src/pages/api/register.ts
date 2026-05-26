@@ -67,179 +67,123 @@ export const POST: APIRoute = async ({ request }) => {
       try {
         const resend = new Resend(resendApiKey);
 
-        // Responsive, high-contrast HTML Email Template with a premium dark sci-fi developer aesthetic
-        const emailHtml = `<!DOCTYPE html>
-<html lang="es">
+        // Plain Text Fallback for anti-spam filters
+        const emailText = `Hola ${repName},
+
+Tu registro para Carnero.Dev fue confirmado exitosamente.
+
+Equipo: ${teamName}
+Representante: ${repName}
+Integrantes: ${membersCount}
+
+Nos vemos en el hackathon.
+Build The Future.`;
+
+        // Simplified, high-deliverability Table-based HTML Email Template
+        // Optimized for Gmail, Outlook, Yahoo Mail, and Mobile Screens
+        const emailHtml = `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Registro Confirmado</title>
-  <style>
-    body {
-      background-color: #07070a;
-      color: #e2e8f0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-    .wrapper {
-      background-color: #07070a;
-      padding: 40px 20px;
-    }
-    .container {
-      background-color: #0f0f15;
-      border: 1px solid rgba(217, 164, 65, 0.15);
-      border-radius: 16px;
-      max-width: 600px;
-      margin: 0 auto;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    }
-    .header {
-      background: linear-gradient(135deg, #4c0519 0%, #0f0f15 100%);
-      padding: 40px 30px;
-      text-align: center;
-      border-bottom: 2px solid #d9a441;
-    }
-    .logo {
-      color: #ffffff;
-      font-family: monospace;
-      font-size: 28px;
-      font-weight: bold;
-      letter-spacing: -1px;
-    }
-    .logo-carnero { color: #d9a441; }
-    .logo-dev { color: #92142e; }
-    .subtitle {
-      color: #d9a441;
-      font-family: monospace;
-      font-size: 11px;
-      letter-spacing: 2px;
-      margin-top: 10px;
-      text-transform: uppercase;
-    }
-    .content {
-      padding: 40px 30px;
-    }
-    h1 {
-      color: #ffffff;
-      font-size: 22px;
-      font-weight: 800;
-      margin-top: 0;
-      margin-bottom: 20px;
-    }
-    p {
-      color: #a0aec0;
-      font-size: 14px;
-      line-height: 1.6;
-      margin-bottom: 24px;
-    }
-    .terminal-box {
-      background-color: #050508;
-      border-left: 3px solid #d9a441;
-      border-radius: 8px;
-      font-family: monospace;
-      font-size: 13px;
-      padding: 20px;
-      margin-bottom: 30px;
-      text-align: left;
-    }
-    .terminal-line {
-      margin-bottom: 8px;
-      font-size: 13px;
-    }
-    .terminal-line:last-child {
-      margin-bottom: 0;
-    }
-    .label {
-      color: #d9a441;
-      font-weight: bold;
-    }
-    .value {
-      color: #ffffff;
-    }
-    .badge {
-      background-color: rgba(146, 20, 46, 0.15);
-      border: 1px solid rgba(146, 20, 46, 0.3);
-      color: #f43f5e;
-      display: inline-block;
-      font-family: monospace;
-      font-size: 11px;
-      padding: 4px 10px;
-      border-radius: 12px;
-      margin-bottom: 20px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-    .footer {
-      background-color: #050508;
-      border-top: 1px solid rgba(217, 164, 65, 0.05);
-      padding: 30px;
-      text-align: center;
-    }
-    .footer-text {
-      color: #718096;
-      font-size: 11px;
-      line-height: 1.5;
-    }
-    .accent {
-      color: #d9a441;
-      font-weight: bold;
-    }
-  </style>
 </head>
-<body>
-  <div class="wrapper">
-    <div class="container">
-      <div class="header">
-        <div class="logo">
-          &lt;<span class="logo-carnero">Carnero</span><span class="logo-dev">.Dev</span>/&gt;
-        </div>
-        <div class="subtitle">Build The Future</div>
-      </div>
-      <div class="content">
-        <span class="badge">REGISTRO_CONFIRMADO</span>
-        <h1>¡Tu lugar está asegurado, representante!</h1>
-        <p>
-          Hola <strong class="value">${repName}</strong>, queremos confirmarte que tu equipo ha sido registrado exitosamente en el hackathon universitario de desarrollo de software más esperado. 
-        </p>
-        <p>
-          Prepárate para vivir 36 horas ininterrumpidas de pura programación, diseño de arquitectura y desarrollo de impacto real.
-        </p>
-        
-        <div class="terminal-box">
-          <div class="terminal-line"><span class="label">EQUIPO:</span> <span class="value">${teamName}</span></div>
-          <div class="terminal-line"><span class="label">REPRESENTANTE:</span> <span class="value">${repName}</span></div>
-          <div class="terminal-line"><span class="label">EMAIL:</span> <span class="value">${repEmail}</span></div>
-          <div class="terminal-line"><span class="label">INTEGRANTES:</span> <span class="value">${membersCount}</span></div>
-          <div class="terminal-line"><span class="label">CATEGORÍA:</span> <span class="value">Build The Future</span></div>
-          <div class="terminal-line"><span class="label">STATUS:</span> <span class="value" style="color: #10b981;">[REGISTRATION_SECURED]</span></div>
-        </div>
-        
-        <p>
-          El evento dará inicio oficial el <span class="accent">Viernes 16 de Octubre a las 09:00 AM</span>. 
-          Asegúrate de llevar tus laptops, cargadores y toda tu energía. ¡Nos vemos en el hack!
-        </p>
-      </div>
-      <div class="header" style="padding: 20px 30px; background: #0b0b10; border-top: 1px solid rgba(217,164,65,0.05); border-bottom: none;">
-        <span style="color: #d9a441; font-family: monospace; font-size: 12px; font-weight: bold; letter-spacing: 1px;">"Build The Future"</span>
-      </div>
-      <div class="footer">
-        <div class="footer-text">
-          Este es un correo automático del sistema Carnero.Dev.<br>
-          ITR Roque • Departamento de TICs.<br>
-          <span class="accent">Build The Future. Code The Paradigm.</span>
-        </div>
-      </div>
-    </div>
-  </div>
+<body style="background-color: #07070a; color: #abb2bf; font-family: Arial, sans-serif; margin: 0; padding: 0; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%;">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color: #07070a; padding: 40px 10px;">
+    <tr>
+      <td align="center">
+        <!-- Main Email Container Table -->
+        <table width="100%" max-width="600" border="0" cellspacing="0" cellpadding="0" style="max-width: 600px; background-color: #0f0f15; border: 1px solid #1f1f2e; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);">
+          
+          <!-- Header (Burgundy Banner) -->
+          <tr>
+            <td align="center" style="background-color: #4a0e17; padding: 30px 20px; border-bottom: 2px solid #d9a441;">
+              <span style="color: #ffffff; font-family: monospace; font-size: 24px; font-weight: bold; letter-spacing: -1px;">
+                &lt;<span style="color: #d9a441;">Carnero</span><span style="color: #ffffff;">.Dev</span>/&gt;
+              </span>
+              <div style="color: #d9a441; font-family: monospace; font-size: 11px; letter-spacing: 2px; margin-top: 6px; text-transform: uppercase;">
+                Build The Future
+              </div>
+            </td>
+          </tr>
+          
+          <!-- Body Content -->
+          <tr>
+            <td style="padding: 40px 30px;">
+              <h1 style="color: #ffffff; font-size: 20px; font-weight: bold; margin-top: 0; margin-bottom: 20px;">
+                ¡Tu registro ha sido confirmado!
+              </h1>
+              
+              <p style="color: #abb2bf; font-size: 14px; line-height: 1.6; margin-bottom: 20px;">
+                Hola <strong style="color: #ffffff;">${repName}</strong>,
+              </p>
+              
+              <p style="color: #abb2bf; font-size: 14px; line-height: 1.6; margin-bottom: 24px;">
+                Te confirmamos que hemos recibido y registrado correctamente la solicitud de tu equipo para participar en **&lt;Carnero.Dev/&gt; — Build The Future**. Nos da mucho gusto recibir a estudiantes de ingenierías y tecnología para colaborar, proponer soluciones creativas y desarrollar proyectos con impacto real.
+              </p>
+              
+              <!-- Data Table -->
+              <table width="100%" border="0" cellspacing="0" cellpadding="10" style="background-color: #050508; border-left: 3px solid #d9a441; border-radius: 6px; margin-bottom: 30px; font-family: monospace; font-size: 13px;">
+                <tr>
+                  <td width="35%" style="color: #d9a441; font-weight: bold; padding: 8px 12px;">EQUIPO:</td>
+                  <td width="65%" style="color: #ffffff; padding: 8px 12px;">${teamName}</td>
+                </tr>
+                <tr>
+                  <td style="color: #d9a441; font-weight: bold; padding: 8px 12px;">REPRESENTANTE:</td>
+                  <td style="color: #ffffff; padding: 8px 12px;">${repName}</td>
+                </tr>
+                <tr>
+                  <td style="color: #d9a441; font-weight: bold; padding: 8px 12px;">CORREO:</td>
+                  <td style="color: #ffffff; padding: 8px 12px;">${repEmail}</td>
+                </tr>
+                <tr>
+                  <td style="color: #d9a441; font-weight: bold; padding: 8px 12px;">INTEGRANTES:</td>
+                  <td style="color: #ffffff; padding: 8px 12px;">${membersCount} integrantes</td>
+                </tr>
+                <tr>
+                  <td style="color: #d9a441; font-weight: bold; padding: 8px 12px;">CATEGORÍA:</td>
+                  <td style="color: #ffffff; padding: 8px 12px;">Build The Future</td>
+                </tr>
+              </table>
+              
+              <p style="color: #abb2bf; font-size: 14px; line-height: 1.6; margin-bottom: 30px;">
+                El hackathon comenzará el **Viernes 16 de Octubre**. En los próximos días recibirás más información sobre los horarios detallados, requerimientos técnicos y recomendaciones para tu llegada. ¡Prepárate para codificar y construir el futuro!
+              </p>
+              
+              <!-- CTA Button Table -->
+              <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-bottom: 10px;">
+                <tr>
+                  <td align="center">
+                    <a href="https://carnero-dev.tech" target="_blank" style="background-color: #d9a441; color: #07070a; font-family: Arial, sans-serif; font-size: 14px; font-weight: bold; text-decoration: none; padding: 12px 28px; border-radius: 6px; display: inline-block;">
+                      Ver información del evento
+                    </a>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          
+          <!-- Footer -->
+          <tr>
+            <td align="center" style="background-color: #050508; border-top: 1px solid #1f1f2e; padding: 30px 20px; color: #718096; font-size: 11px; line-height: 1.6;">
+              Este es un correo automático enviado por el sistema de registro de Carnero.Dev.<br />
+              ITR Roque • Departamento de TICs.<br />
+              <span style="color: #d9a441;">Build The Future. Code The Paradigm.</span>
+            </td>
+          </tr>
+          
+        </table>
+      </td>
+    </tr>
+  </table>
 </body>
 </html>`;
 
         const mailResult = await resend.emails.send({
-          from: 'Carnero.Dev <onboarding@resend.dev>',
+          from: 'Carnero.Dev <registro@carnero-dev.tech>',
           to: repEmail,
-          subject: 'Registro Confirmado — <Carnero.Dev/>',
+          subject: 'Tu registro para Carnero.Dev fue confirmado',
+          text: emailText,
           html: emailHtml
         });
 

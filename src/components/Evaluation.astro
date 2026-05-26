@@ -93,7 +93,7 @@ const criteria = [
           <!-- Interactive progress bar -->
           <div class="w-full">
             <div class="w-full h-1.5 bg-charcoal-950 rounded-full overflow-hidden border border-charcoal-800">
-              <div class={`h-full bg-gradient-to-r ${c.barColor} transition-all duration-500`} style={`width: ${c.percentage}`}></div>
+              <div class={`h-full bg-gradient-to-r ${c.barColor} gsap-progress-bar`} data-percent={c.percentage} style="width: 0%"></div>
             </div>
           </div>
         </div>
