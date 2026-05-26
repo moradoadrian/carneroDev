@@ -1,0 +1,158 @@
+---
+const options = [
+  {
+    title: 'Aplicaciones Web',
+    desc: 'Interfaces responsivas de alto rendimiento, portales dinámicos y arquitecturas serverless modernas.',
+    icon: `<svg class="w-6 h-6 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>`,
+    color: 'border-gold-500/20 hover:border-gold-500/40 hover:shadow-[0_0_30px_rgba(217,164,65,0.08)]',
+    tagColor: 'text-gold-500 bg-gold-500/5'
+  },
+  {
+    title: 'Aplicaciones Móviles',
+    desc: 'Experiencias de usuario fluidas en iOS y Android con enfoque nativo o híbrido offline-first.',
+    icon: `<svg class="w-6 h-6 text-burgundy-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>`,
+    color: 'border-burgundy-800/20 hover:border-burgundy-600/40 hover:shadow-[0_0_30px_rgba(90,16,34,0.1)]',
+    tagColor: 'text-burgundy-400 bg-burgundy-950/40'
+  },
+  {
+    title: 'Inteligencia Artificial',
+    desc: 'Integración inteligente con modelos LLM, agentes autónomos y análisis predictivo de datos.',
+    icon: `<svg class="w-6 h-6 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>`,
+    color: 'border-gold-500/20 hover:border-gold-500/40 hover:shadow-[0_0_30px_rgba(217,164,65,0.08)]',
+    tagColor: 'text-gold-500 bg-gold-500/5'
+  },
+  {
+    title: 'Herramientas de Automatización',
+    desc: 'Automatización de procesos robóticos, flujos de trabajo inteligentes e integraciones de sistemas.',
+    icon: `<svg class="w-6 h-6 text-burgundy-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>`,
+    color: 'border-burgundy-800/20 hover:border-burgundy-600/40 hover:shadow-[0_0_30px_rgba(90,16,34,0.1)]',
+    tagColor: 'text-burgundy-400 bg-burgundy-950/40'
+  },
+  {
+    title: 'APIs & Plataformas',
+    desc: 'Arquitecturas backend sólidas, microservicios, bases de datos optimizadas y portales integrados.',
+    icon: `<svg class="w-6 h-6 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>`,
+    color: 'border-gold-500/20 hover:border-gold-500/40 hover:shadow-[0_0_30px_rgba(217,164,65,0.08)]',
+    tagColor: 'text-gold-500 bg-gold-500/5'
+  },
+  {
+    title: 'Soluciones de Impacto Social',
+    desc: 'Proyectos orientados a resolver problemas reales de educación, salud, ecología o comunidad.',
+    icon: `<svg class="w-6 h-6 text-burgundy-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>`,
+    color: 'border-burgundy-800/20 hover:border-burgundy-600/40 hover:shadow-[0_0_30px_rgba(90,16,34,0.1)]',
+    tagColor: 'text-burgundy-400 bg-burgundy-950/40'
+  },
+  {
+    title: 'Herramientas de Ciberseguridad',
+    desc: 'Auditorías automatizadas, criptografía de datos, defensa ética y protección de la privacidad.',
+    icon: `<svg class="w-6 h-6 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>`,
+    color: 'border-gold-500/20 hover:border-gold-500/40 hover:shadow-[0_0_30px_rgba(217,164,65,0.08)]',
+    tagColor: 'text-gold-500 bg-gold-500/5'
+  },
+  {
+    title: 'Proyectos IoT',
+    desc: 'Telemetría física de sensores, control a distancia y prototipado rápido con microcontroladores.',
+    icon: `<svg class="w-6 h-6 text-burgundy-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/></svg>`,
+    color: 'border-burgundy-800/20 hover:border-burgundy-600/40 hover:shadow-[0_0_30px_rgba(90,16,34,0.1)]',
+    tagColor: 'text-burgundy-400 bg-burgundy-950/40'
+  }
+];
+---
+
+<section 
+  id="desafio" 
+  class="relative py-28 px-4 overflow-hidden bg-charcoal-950"
+>
+  <!-- Background grids and lights -->
+  <div class="absolute inset-0 bg-grid-cyber opacity-15 pointer-events-none z-0"></div>
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-burgundy-950/5 rounded-full blur-[180px] pointer-events-none z-0"></div>
+
+  <div class="max-w-7xl mx-auto relative z-10">
+    
+    <!-- Title Section -->
+    <div class="text-center mb-20">
+      <h2 class="font-mono text-xs uppercase tracking-widest text-gold-500 mb-3">[ EL DESAFÍO ]</h2>
+      <p class="text-4xl md:text-5xl font-display font-black text-white tracking-tight">
+        &lt;<span class="text-gold-500">Carnero</span><span class="text-burgundy-500">.Dev</span>/&gt; — Build The Future
+      </p>
+      <div class="w-20 h-1 bg-gradient-to-r from-gold-500 to-burgundy-600 mx-auto mt-6 rounded-full"></div>
+      
+      <p class="mt-6 font-sans text-brand-white/80 max-w-3xl mx-auto text-base md:text-lg leading-relaxed">
+        Un hackathon de software impulsado por estudiantes y enfocado en resolver problemáticas reales de la comunidad a través de la tecnología, creatividad, innovación y colaboración.
+      </p>
+
+      <div class="mt-8 p-6 glassmorphism bg-burgundy-950/15 border border-burgundy-800/20 max-w-2xl mx-auto rounded-2xl">
+        <p class="font-mono text-sm text-gold-400 italic">
+          "Desarrolla una solución tecnológica innovadora capaz de resolver un problema real utilizando software, automatización, inteligencia artificial o herramientas digitales."
+        </p>
+      </div>
+    </div>
+
+    <!-- Objective Pillars -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20 max-w-5xl mx-auto">
+      <div class="glassmorphism bg-charcoal-900/40 p-6 rounded-2xl border border-gold-500/10 text-center flex flex-col items-center">
+        <div class="w-12 h-12 bg-gold-950/50 border border-gold-500/20 rounded-full flex items-center justify-center text-gold-500 mb-4 select-none">
+          <span class="font-mono text-lg font-bold">1</span>
+        </div>
+        <h3 class="font-display font-bold text-white mb-2 text-base">Identificar un Problema</h3>
+        <p class="font-sans text-xs text-brand-white/60">Detecta una necesidad, reto o ineficiencia real en tu entorno universitario, social o institucional.</p>
+      </div>
+      <div class="glassmorphism bg-charcoal-900/40 p-6 rounded-2xl border border-burgundy-800/20 text-center flex flex-col items-center">
+        <div class="w-12 h-12 bg-burgundy-950/50 border border-burgundy-800/30 rounded-full flex items-center justify-center text-burgundy-400 mb-4 select-none">
+          <span class="font-mono text-lg font-bold">2</span>
+        </div>
+        <h3 class="font-display font-bold text-white mb-2 text-base">Proponer la Solución</h3>
+        <p class="font-sans text-xs text-brand-white/60">Diseña una propuesta tecnológica creativa, viable y disruptiva para abordar la problemática.</p>
+      </div>
+      <div class="glassmorphism bg-charcoal-900/40 p-6 rounded-2xl border border-gold-500/10 text-center flex flex-col items-center">
+        <div class="w-12 h-12 bg-gold-950/50 border border-gold-500/20 rounded-full flex items-center justify-center text-gold-500 mb-4 select-none">
+          <span class="font-mono text-lg font-bold">3</span>
+        </div>
+        <h3 class="font-display font-bold text-white mb-2 text-base">Construir el Prototipo</h3>
+        <p class="font-sans text-xs text-brand-white/60">Desarrolla un prototipo funcional de software durante las 36 horas continuas de competencia.</p>
+      </div>
+    </div>
+
+    <!-- Core Values Badge -->
+    <div class="flex flex-wrap items-center justify-center gap-3 mb-10 select-none">
+      {['Creatividad', 'Ingeniería de Software', 'Trabajo en Equipo', 'Innovación', 'Resolución de Problemas', 'Impacto Real'].map(v => (
+        <span class="font-mono text-[9px] md:text-xs font-semibold text-gold-400 bg-gold-500/5 border border-gold-500/20 px-3 py-1 rounded-full tracking-wider uppercase">
+          {v}
+        </span>
+      ))}
+    </div>
+
+    <!-- Subtitle Grid Info -->
+    <div class="text-center mb-10">
+      <h3 class="font-mono text-xs text-brand-white/40 uppercase tracking-widest">[ ¿QUÉ PUEDES CONSTRUIR? ]</h3>
+      <p class="font-sans text-xs text-brand-white/50 mt-2 max-w-xl mx-auto">
+        No hay restricciones técnicas rígidas. Tienes absoluta libertad creativa para dar forma a tu solución ideal utilizando cualquiera de los siguientes enfoques:
+      </p>
+    </div>
+
+    <!-- Grid what can they build -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {options.map((opt, idx) => (
+        <div class={`glassmorphism bg-charcoal-900/50 p-6 rounded-2xl border transition-all duration-300 hover:-translate-y-1 ${opt.color} group relative overflow-hidden flex flex-col justify-between`}>
+          <!-- Glowing corner border indicator -->
+          <div class="absolute top-0 left-0 w-2 h-10 bg-gradient-to-b from-gold-500/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          <div class="absolute top-0 left-0 w-10 h-2 bg-gradient-to-r from-gold-500/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="font-mono text-[9px] text-brand-white/30 font-bold">MODE_0{idx + 1}</span>
+              <div class="p-2 bg-charcoal-950 border border-charcoal-800 rounded-lg group-hover:scale-105 transition-transform" set:html={opt.icon}></div>
+            </div>
+            <h4 class="font-display font-bold text-sm text-white mb-2 group-hover:text-gold-400 transition-colors">
+              {opt.title}
+            </h4>
+            <p class="font-sans text-[11px] text-brand-white/60 leading-relaxed">
+              {opt.desc}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

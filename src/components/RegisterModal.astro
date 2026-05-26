@@ -68,22 +68,14 @@
           />
         </div>
 
-        <!-- Track Selector -->
+        <!-- Track / Categoría Única Display -->
         <div>
-          <label class="font-mono text-[10px] text-gold-500 uppercase tracking-widest block mb-1.5 font-bold">Track Seleccionado *</label>
-          <select 
-            name="track"
-            required
-            class="w-full bg-charcoal-950 border border-burgundy-900/30 rounded-xl px-4 py-2.5 text-sm text-brand-white/80 focus:outline-none focus:border-gold-500/30 transition-colors"
-          >
-            <option value="" disabled selected class="bg-charcoal-900 text-brand-white/30">Selecciona una categoría</option>
-            <option value="web" class="bg-charcoal-900">Track 01 // Web Development</option>
-            <option value="mobile" class="bg-charcoal-900">Track 02 // Mobile Apps</option>
-            <option value="ai" class="bg-charcoal-900">Track 03 // AI & Machine Learning</option>
-            <option value="cyber" class="bg-charcoal-900">Track 04 // Cybersecurity</option>
-            <option value="iot" class="bg-charcoal-900">Track 05 // IoT & Hardware</option>
-            <option value="open" class="bg-charcoal-900">Track 06 // Open Innovation</option>
-          </select>
+          <label class="font-mono text-[10px] text-gold-500 uppercase tracking-widest block mb-1.5 font-bold">Categoría de Participación *</label>
+          <div class="w-full bg-charcoal-950/70 border border-gold-500/20 rounded-xl px-4 py-2.5 text-sm text-gold-400 font-mono flex items-center gap-2 select-none shadow-[0_0_15px_rgba(217,164,65,0.02)]">
+            <span class="inline-block w-2 h-2 rounded-full bg-gold-500 animate-pulse"></span>
+            &lt;Carnero.Dev/&gt; — Build The Future
+          </div>
+          <input type="hidden" name="track" value="build_the_future" />
         </div>
 
         <!-- Divider line -->
@@ -116,15 +108,18 @@
         <!-- Member Count -->
         <div>
           <label class="font-mono text-[10px] text-gold-500 uppercase tracking-widest block mb-1.5 font-bold">Integrantes del Equipo (Incluyendo Líder) *</label>
-          <div class="flex items-center gap-4">
+          <div class="flex flex-wrap items-center gap-4">
+            <label class="flex items-center gap-2 font-sans text-sm text-brand-white/80 cursor-pointer">
+              <input type="radio" name="membersCount" value="1" class="accent-gold-500" /> 1 integrante
+            </label>
+            <label class="flex items-center gap-2 font-sans text-sm text-brand-white/80 cursor-pointer">
+              <input type="radio" name="membersCount" value="2" class="accent-gold-500" /> 2 integrantes
+            </label>
             <label class="flex items-center gap-2 font-sans text-sm text-brand-white/80 cursor-pointer">
               <input type="radio" name="membersCount" value="3" checked class="accent-gold-500" /> 3 integrantes
             </label>
             <label class="flex items-center gap-2 font-sans text-sm text-brand-white/80 cursor-pointer">
               <input type="radio" name="membersCount" value="4" class="accent-gold-500" /> 4 integrantes
-            </label>
-            <label class="flex items-center gap-2 font-sans text-sm text-brand-white/80 cursor-pointer">
-              <input type="radio" name="membersCount" value="5" class="accent-gold-500" /> 5 integrantes
             </label>
           </div>
         </div>

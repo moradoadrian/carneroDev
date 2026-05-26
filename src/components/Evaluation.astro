@@ -1,0 +1,119 @@
+---
+const criteria = [
+  {
+    title: 'Innovación',
+    percentage: '30%',
+    desc: 'Originalidad del concepto y nivel de disrupción de la solución propuesta. ¿Es una idea fresca y creativa?',
+    color: 'border-gold-500/20 hover:border-gold-500/50 hover:shadow-[0_0_30px_rgba(217,164,65,0.1)]',
+    barColor: 'from-gold-600 to-gold-400',
+    percentTextColor: 'text-gold-400'
+  },
+  {
+    title: 'Impacto Real',
+    percentage: '25%',
+    desc: 'Viabilidad y efectividad de la solución tecnológica para resolver la problemática planteada.',
+    color: 'border-burgundy-800/30 hover:border-burgundy-600/50 hover:shadow-[0_0_30px_rgba(90,16,34,0.15)]',
+    barColor: 'from-burgundy-800 to-burgundy-600',
+    percentTextColor: 'text-burgundy-400'
+  },
+  {
+    title: 'Funcionamiento Técnico',
+    percentage: '25%',
+    desc: 'Robustez de la arquitectura, calidad del código fuente, buen uso de herramientas y estabilidad del prototipo.',
+    color: 'border-gold-500/20 hover:border-gold-500/50 hover:shadow-[0_0_30px_rgba(217,164,65,0.1)]',
+    barColor: 'from-gold-600 to-gold-400',
+    percentTextColor: 'text-gold-400'
+  },
+  {
+    title: 'Diseño UX/UI',
+    percentage: '10%',
+    desc: 'Usabilidad, interfaz de usuario estética, flujos coherentes y una experiencia intuitiva para el usuario.',
+    color: 'border-burgundy-800/30 hover:border-burgundy-600/50 hover:shadow-[0_0_30px_rgba(90,16,34,0.15)]',
+    barColor: 'from-burgundy-800 to-burgundy-600',
+    percentTextColor: 'text-burgundy-400'
+  },
+  {
+    title: 'Presentación Final',
+    percentage: '10%',
+    desc: 'Claridad en el pitch de 3 minutos, diapositivas y capacidad de respuesta a dudas técnicas y de negocio del jurado.',
+    color: 'border-gold-500/20 hover:border-gold-500/50 hover:shadow-[0_0_30px_rgba(217,164,65,0.1)]',
+    barColor: 'from-gold-600 to-gold-400',
+    percentTextColor: 'text-gold-400'
+  }
+];
+---
+
+<section 
+  id="evaluacion" 
+  class="relative py-28 px-4 overflow-hidden bg-charcoal-900 border-t border-burgundy-900/10"
+>
+  <div class="absolute inset-0 bg-dot-matrix opacity-10 pointer-events-none"></div>
+
+  <div class="max-w-6xl mx-auto relative z-10">
+    
+    <!-- Title -->
+    <div class="text-center mb-20">
+      <h2 class="font-mono text-xs uppercase tracking-widest text-gold-500 mb-3">[ CRITERIOS DE EVALUACIÓN ]</h2>
+      <p class="text-4xl md:text-5xl font-display font-black text-white tracking-tight">
+        Rúbrica y Calificación
+      </p>
+      <div class="w-20 h-1 bg-gradient-to-r from-gold-500 to-burgundy-600 mx-auto mt-6 rounded-full"></div>
+      
+      <p class="mt-6 font-sans text-brand-white/70 max-w-2xl mx-auto text-base">
+        Cada proyecto será evaluado bajo una rúbrica balanceada por un jurado independiente de especialistas. 
+        Apunta a la excelencia en todas las dimensiones para dominar la tabla de puntuación.
+      </p>
+    </div>
+
+    <!-- Main Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 items-stretch">
+      {criteria.map((c, idx) => (
+        <div class={`glassmorphism bg-charcoal-900/40 p-6 md:p-8 rounded-3xl border flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 relative group overflow-hidden ${c.color} ${idx >= 3 ? 'lg:col-span-1' : 'lg:col-span-1'} ${idx === 3 ? 'lg:ml-auto w-full' : ''}`}>
+          
+          <div class="absolute top-0 right-0 w-20 h-20 bg-brand-white/[0.01] rounded-bl-full pointer-events-none group-hover:bg-brand-white/[0.03] transition-colors"></div>
+
+          <div>
+            <!-- Header layout with percentage -->
+            <div class="flex items-baseline justify-between mb-6">
+              <span class="font-mono text-[9px] text-brand-white/40 tracking-wider">CRIT_0{idx + 1}</span>
+              <span class={`font-display font-black text-4xl leading-none ${c.percentTextColor}`}>
+                {c.percentage}
+              </span>
+            </div>
+            
+            <!-- Titles and contents -->
+            <h3 class="font-display font-bold text-lg text-white mb-3 group-hover:text-gold-400 transition-colors">
+              {c.title}
+            </h3>
+            <p class="font-sans text-xs text-brand-white/60 leading-relaxed mb-6">
+              {c.desc}
+            </p>
+          </div>
+
+          <!-- Interactive progress bar -->
+          <div class="w-full">
+            <div class="w-full h-1.5 bg-charcoal-950 rounded-full overflow-hidden border border-charcoal-800">
+              <div class={`h-full bg-gradient-to-r ${c.barColor} transition-all duration-500`} style={`width: ${c.percentage}`}></div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Aesthetic Warning Board -->
+    <div class="mt-16 glassmorphism bg-charcoal-900/60 p-6 rounded-2xl border border-burgundy-900/20 max-w-3xl mx-auto flex items-start gap-4 shadow-xl">
+      <div class="p-3 bg-burgundy-950/40 border border-burgundy-800/30 rounded-xl text-gold-500 shrink-0">
+        <svg class="w-6 h-6 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+        </svg>
+      </div>
+      <div>
+        <h4 class="font-mono text-xs uppercase text-gold-400 font-bold mb-1">[ REGLAMENTO DE CALIFICACIÓN ]</h4>
+        <p class="font-sans text-xs text-brand-white/60 leading-relaxed">
+          Para que el proyecto sea elegible a calificación, el equipo debe contar con un **repositorio de GitHub válido y commits demostrables** hechos durante el evento. Cualquier indicio de software pre-construido o plagio resultará en una calificación inmediata de 0% en la rúbrica técnica.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>

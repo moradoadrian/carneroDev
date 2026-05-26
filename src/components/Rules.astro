@@ -1,0 +1,95 @@
+---
+const rules = [
+  {
+    title: 'Equipos de 1 a 4 integrantes',
+    desc: 'Participación individual o en equipos pequeños de hasta 4 miembros para mantener la equidad.',
+    icon: `<svg class="w-5 h-5 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>`,
+    color: 'border-gold-500/10 hover:border-gold-500/30'
+  },
+  {
+    title: 'Desarrollo en el Evento',
+    desc: 'El proyecto debe ser ideado y desarrollado a partir del inicio del Hackathon. No se permite código heredado.',
+    icon: `<svg class="w-5 h-5 text-burgundy-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>`,
+    color: 'border-burgundy-800/10 hover:border-burgundy-600/30'
+  },
+  {
+    title: 'Soporte e IA como Apoyo',
+    desc: 'Se permite y fomenta el uso de Inteligencia Artificial para agilizar y depurar código, mas no para generar ideas pre-hechas.',
+    icon: `<svg class="w-5 h-5 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>`,
+    color: 'border-gold-500/10 hover:border-gold-500/30'
+  },
+  {
+    title: 'Proyectos Inéditos',
+    desc: 'No se permite presentar proyectos previamente finalizados o modificados de otros hackathones.',
+    icon: `<svg class="w-5 h-5 text-burgundy-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>`,
+    color: 'border-burgundy-800/10 hover:border-burgundy-600/30'
+  },
+  {
+    title: 'Demo Funcional Obligatoria',
+    desc: 'El software debe poder interactuar en vivo con el jurado mentor. Las maquetas estáticas no califican.',
+    icon: `<svg class="w-5 h-5 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>`,
+    color: 'border-gold-500/10 hover:border-gold-500/30'
+  },
+  {
+    title: 'Presentación de Proyectos',
+    desc: 'Todos los equipos deben realizar su pitch final en el escenario para recibir calificación y retroalimentación.',
+    icon: `<svg class="w-5 h-5 text-burgundy-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 4a2 2 0 00-2 2v3m2-3a2 2 0 012 2v3m2-3a2 2 0 00-2-2m-2 3v4m0 0h4m-4 0a2 2 0 01-2-2v-3a2 2 0 012-2h3a2 2 0 012 2v3a2 2 0 01-2 2h-3z"/></svg>`,
+    color: 'border-burgundy-800/10 hover:border-burgundy-600/30'
+  }
+];
+---
+
+<section 
+  id="bases-resumen" 
+  class="relative py-28 px-4 overflow-hidden bg-charcoal-900 border-t border-burgundy-900/10"
+>
+  <div class="absolute inset-0 bg-dot-matrix opacity-10 pointer-events-none"></div>
+
+  <div class="max-w-5xl mx-auto relative z-10">
+    
+    <!-- Title -->
+    <div class="text-center mb-20">
+      <h2 class="font-mono text-xs uppercase tracking-widest text-gold-500 mb-3">[ HACKATHON RULES ]</h2>
+      <p class="text-4xl md:text-5xl font-display font-black text-white tracking-tight">
+        Bases del Evento
+      </p>
+      <div class="w-20 h-1 bg-gradient-to-r from-gold-500 to-burgundy-600 mx-auto mt-6 rounded-full"></div>
+      
+      <p class="mt-6 font-sans text-brand-white/70 max-w-2xl mx-auto text-base">
+        Queremos una competencia transparente, constructiva y de alto nivel. 
+        Revisa las reglas principales que regirán el hackathon durante todo el fin de semana.
+      </p>
+    </div>
+
+    <!-- Rules list grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+      {rules.map((rule, idx) => (
+        <div class={`glassmorphism bg-charcoal-900/40 p-6 rounded-2xl border flex gap-4 transition-all duration-300 hover:-translate-y-0.5 ${rule.color} group`}>
+          <div class="p-3 bg-charcoal-950 border border-charcoal-800 rounded-xl group-hover:scale-105 transition-transform h-fit select-none" set:html={rule.icon}></div>
+          <div>
+            <h3 class="font-display font-bold text-sm text-white mb-1.5 group-hover:text-gold-400 transition-colors">
+              <span class="font-mono text-gold-500/60 mr-1.5">[0{idx + 1}]</span>{rule.title}
+            </h3>
+            <p class="font-sans text-xs text-brand-white/60 leading-relaxed">
+              {rule.desc}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Read Full Rules Page Button Link -->
+    <div class="text-center select-none">
+      <p class="font-sans text-xs text-brand-white/40 mb-6">
+        * Para conocer las especificaciones legales completas, hitos del cronograma y licencias de software:
+      </p>
+      <a 
+        href="/bases" 
+        class="font-mono inline-block px-8 py-4 rounded-full font-bold bg-gradient-to-r from-burgundy-800 to-gold-600 text-white hover:from-burgundy-700 hover:to-gold-500 transition-all duration-300 shadow-lg hover:shadow-[0_0_20px_rgba(217,164,65,0.25)] hover:scale-105"
+      >
+        [ Leer Reglamento Completo ]
+      </a>
+    </div>
+
+  </div>
+</section>

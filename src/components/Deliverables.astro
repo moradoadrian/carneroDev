@@ -1,0 +1,83 @@
+---
+const deliverables = [
+  {
+    title: 'Demo Funcional',
+    desc: 'Un prototipo interactivo ejecutable ante los jueces que demuestre la resolución del flujo o problema principal.',
+    icon: `<svg class="w-6 h-6 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>`,
+    color: 'border-gold-500/20 hover:border-gold-500/40 hover:shadow-[0_0_30px_rgba(217,164,65,0.08)]'
+  },
+  {
+    title: 'Repositorio GitHub',
+    desc: 'Código fuente alojado públicamente con commits frecuentes y organizados que demuestren el flujo de trabajo durante el evento.',
+    icon: `<svg class="w-6 h-6 text-burgundy-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>`,
+    color: 'border-burgundy-800/20 hover:border-burgundy-600/40 hover:shadow-[0_0_30px_rgba(90,16,34,0.1)]'
+  },
+  {
+    title: 'Pitch de 3 Minutos',
+    desc: 'Una exposición de alto impacto frente al jurado resumiendo el problema, la solución, el modelo técnico y demostración en vivo.',
+    icon: `<svg class="w-6 h-6 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/></svg>`,
+    color: 'border-gold-500/20 hover:border-gold-500/40 hover:shadow-[0_0_30px_rgba(217,164,65,0.08)]'
+  },
+  {
+    title: 'Presentación Breve',
+    desc: 'Material visual de soporte estructurado (5 a 7 diapositivas) explicando el alcance del MVP, impacto y arquitectura.',
+    icon: `<svg class="w-6 h-6 text-burgundy-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 12l3-3 3 3 4-4M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>`,
+    color: 'border-burgundy-800/20 hover:border-burgundy-600/40 hover:shadow-[0_0_30px_rgba(90,16,34,0.1)]'
+  },
+  {
+    title: 'Código Funcional',
+    desc: 'Software estructurado, sin placeholders vacíos, listo para ejecutarse e integrarse a producción en entornos reales.',
+    icon: `<svg class="w-6 h-6 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>`,
+    color: 'border-gold-500/20 hover:border-gold-500/40 hover:shadow-[0_0_30px_rgba(217,164,65,0.08)]'
+  }
+];
+---
+
+<section 
+  id="entregables" 
+  class="relative py-28 px-4 overflow-hidden bg-charcoal-950 border-t border-burgundy-900/10"
+>
+  <div class="absolute inset-0 bg-grid-cyber opacity-15 pointer-events-none z-0"></div>
+  <div class="absolute bottom-1/4 left-1/4 w-[350px] h-[350px] bg-burgundy-900/5 rounded-full blur-[130px] pointer-events-none z-0"></div>
+
+  <div class="max-w-6xl mx-auto relative z-10">
+    
+    <!-- Title -->
+    <div class="text-center mb-20">
+      <h2 class="font-mono text-xs uppercase tracking-widest text-gold-500 mb-3">[ HACKATHON DELIVERABLES ]</h2>
+      <p class="text-4xl md:text-5xl font-display font-black text-white tracking-tight">
+        ¿Qué Deben Entregar?
+      </p>
+      <div class="w-20 h-1 bg-gradient-to-r from-gold-500 to-burgundy-600 mx-auto mt-6 rounded-full"></div>
+      
+      <p class="mt-6 font-sans text-brand-white/70 max-w-2xl mx-auto text-base">
+        Para competir por la bolsa de premios y menciones especiales, todos los equipos deben subir y presentar los siguientes elementos en los plazos fijados.
+      </p>
+    </div>
+
+    <!-- Deliverables Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 max-w-6xl mx-auto items-stretch">
+      {deliverables.map((d, idx) => (
+        <div class={`glassmorphism bg-charcoal-900/50 p-6 md:p-8 rounded-3xl border transition-all duration-300 hover:-translate-y-1 ${d.color} group relative overflow-hidden flex flex-col justify-between`}>
+          <!-- Glowing corner border indicator -->
+          <div class="absolute top-0 left-0 w-2 h-12 bg-gradient-to-b from-gold-500/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          <div class="absolute top-0 left-0 w-12 h-2 bg-gradient-to-r from-gold-500/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <span class="font-mono text-[9px] text-brand-white/30 font-bold">DELIV_0{idx + 1}</span>
+              <div class="p-2.5 bg-charcoal-950 border border-charcoal-800 rounded-xl group-hover:scale-110 transition-transform duration-300" set:html={d.icon}></div>
+            </div>
+            <h3 class="font-display font-bold text-lg text-white mb-3 group-hover:text-gold-400 transition-colors">
+              {d.title}
+            </h3>
+            <p class="font-sans text-xs text-brand-white/60 leading-relaxed">
+              {d.desc}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
