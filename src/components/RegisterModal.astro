@@ -132,11 +132,17 @@
           </label>
         </div>
 
+        <!-- Error Message Panel -->
+        <div id="registration-error" class="hidden text-xs font-mono p-3.5 rounded-xl border border-red-500/25 bg-red-950/20 text-red-400 select-none my-2 leading-relaxed">
+          [ERROR_DE_SISTEMA]: Ocurrió un error al procesar el registro. Intente de nuevo.
+        </div>
+
         <!-- Submit CTA -->
         <div class="pt-4">
           <button 
             type="submit" 
-            class="w-full font-mono text-sm py-3 px-6 rounded-xl font-bold bg-gradient-to-r from-burgundy-800 to-gold-600 text-white hover:from-burgundy-700 hover:to-gold-500 transition-all duration-300 shadow-md hover:shadow-[0_0_20px_rgba(217,164,65,0.25)] hover:scale-[1.02] active:scale-95 cursor-pointer"
+            id="btn-submit-registration"
+            class="w-full font-mono text-sm py-3 px-6 rounded-xl font-bold bg-gradient-to-r from-burgundy-800 to-gold-600 text-white hover:from-burgundy-700 hover:to-gold-500 transition-all duration-300 shadow-md hover:shadow-[0_0_20px_rgba(217,164,65,0.25)] hover:scale-[1.02] active:scale-95 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
           >
             [ ENVIAR REGISTRO ]
           </button>
@@ -154,6 +160,8 @@
   const form = document.getElementById('registration-form') as HTMLFormElement;
   const successScreen = document.getElementById('registration-success');
   const successCloseBtn = document.getElementById('btn-success-close');
+  const errorScreen = document.getElementById('registration-error');
+  const submitBtn = document.getElementById('btn-submit-registration') as HTMLButtonElement;
 
   function openModal() {
     if (!modal || !card) return;
@@ -177,6 +185,7 @@
       if (form) form.classList.remove('hidden');
       if (successScreen) successScreen.classList.add('hidden');
       if (form) form.reset();
+      if (errorScreen) errorScreen.classList.add('hidden');
     }, 300);
   }
 
@@ -201,12 +210,84 @@
   });
 
   // Handle Form Submission
-  form?.addEventListener('submit', (e) => {
+  form?.addEventListener('submit', async (e) => {
     e.preventDefault();
-    if (!form || !successScreen) return;
-    
-    // Hide form and show terminal success panel
-    form.classList.add('hidden');
-    successScreen.classList.remove('hidden');
+    if (!form || !successScreen || !submitBtn || !errorScreen) return;
+
+    // Reset error state
+    errorScreen.classList.add('hidden');
+
+    // Gather inputs
+    const teamNameInput = form.querySelector('input[name="teamName"]') as HTMLInputElement;
+    const repNameInput = form.querySelector('input[name="repName"]') as HTMLInputElement;
+    const repEmailInput = form.querySelector('input[name="repEmail"]') as HTMLInputElement;
+    const membersCountInput = form.querySelector('input[name="membersCount"]:checked') as HTMLInputElement;
+    const termsInput = form.querySelector('input[type="checkbox"]') as HTMLInputElement;
+
+    const teamName = teamNameInput?.value?.trim();
+    const repName = repNameInput?.value?.trim();
+    const repEmail = repEmailInput?.value?.trim();
+    const membersCount = membersCountInput?.value;
+
+    // Validation
+    if (!teamName || !repName || !repEmail || !membersCount || !termsInput?.checked) {
+      errorScreen.innerText = '[ERROR_DE_VALIDACION]: Por favor, complete todos los campos obligatorios y acepte los términos.';
+      errorScreen.classList.remove('hidden');
+      return;
+    }
+
+    // Email pattern validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(repEmail)) {
+      errorScreen.innerText = '[ERROR_DE_VALIDACION]: Ingrese un correo electrónico válido.';
+      errorScreen.classList.remove('hidden');
+      return;
+    }
+
+    try {
+      // Toggle loading state
+      submitBtn.disabled = true;
+      submitBtn.innerText = '[ ENVIANDO... ]';
+
+      // Submit to our secure local server API route
+      const response = await fetch('/api/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          teamName,
+          repName,
+          repEmail,
+          membersCount
+        })
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Ocurrió un error al procesar el registro.');
+      }
+
+      // Success
+      form.classList.add('hidden');
+      successScreen.classList.remove('hidden');
+      form.reset();
+
+    } catch (err: any) {
+      console.error('[REGISTRATION_ERROR]', err);
+      
+      let msg = 'Ocurrió un problema inesperado al registrar el equipo. Inténtelo de nuevo.';
+      if (err && err.message) {
+        msg = err.message;
+      }
+      
+      errorScreen.innerText = msg;
+      errorScreen.classList.remove('hidden');
+    } finally {
+      // Clear loading state
+      submitBtn.disabled = false;
+      submitBtn.innerText = '[ ENVIAR REGISTRO ]';
+    }
   });
 </script>
